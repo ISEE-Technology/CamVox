@@ -37,8 +37,8 @@ Clone the repository and catkin_make:
     cd ~/catkin_ws/src
     git clone https://github.com/ISEE-Technology/CamVox && cd ..
     catkin_make
-	cd src/CamVox/isee-camvox && chmod +x build_camvox.sh	
-	./build_camvox.sh
+    cd src/CamVox/isee-camvox && chmod +x build_camvox.sh	
+    ./build_camvox.sh
     source ~/catkin_ws/devel/setup.bash
 ```
 ## 3. Run with Hardware
@@ -91,7 +91,7 @@ Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver instal
 
 ```bash
     chmod +x run.sh
-	./run.sh
+    ./run.sh
 ```
 
 
@@ -112,7 +112,7 @@ The effects of automatic calibration is shown as follows.
 ### 4.3 Running
 ```bash
     chmod +x run.sh
-	./run.sh
+    ./run.sh
     rosbag play YOUR_DOWNLOADED.bag
 ```
 
