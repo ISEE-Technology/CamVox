@@ -1,0 +1,2 @@
+set(isee_synchronize_MESSAGE_FILES "msg/CustomPoint.msg;msg/CustomMsg.msg;msg/GPS.msg")
+set(isee_synchronize_SERVICE_FILES "srv/FirmwareUpdate.srv;srv/refLLAUpdate.srv")

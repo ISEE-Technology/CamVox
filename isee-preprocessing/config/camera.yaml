@@ -1,0 +1,18 @@
+width: 1520              #图像宽度
+height: 568              #图像高度
+OffsetX: 776             #X方向偏置
+OffsetY: 740             #Y方向偏置
+
+FrameRateEnable: true    #使能
+FrameRate: 10            #帧率
+TriggerMode: 1           #外部     
+TriggerSource: 2         #Line2   
+LineSelector: 2          #Line2   
+
+ExposureTime: 10000      #曝光时间
+GammaEnable: true        #伽马使能
+Gamma: 0.7               #伽马因子 
+GainAuto: 2              #亮度自動  ss
+SaturationEnable: true   #使能
+Saturation: 128          #饱和度
+

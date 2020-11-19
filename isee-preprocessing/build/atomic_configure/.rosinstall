@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/zyw/catkin_ws/src/camvox/isee-synchronize/build/devel/setup.sh

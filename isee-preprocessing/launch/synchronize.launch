@@ -1,0 +1,8 @@
+<launch>
+    <rosparam file="$(find isee_synchronize)/config/camera.yaml" command="load"/>
+    <node pkg="isee_synchronize" type="isee_synchronize" name="isee_synchronize" respawn="true" output="screen" /> 
+    <node pkg="isee_synchronize" type="livox_repub" name="livox_repub" output="screen" />
+    <node pkg="isee_synchronize" type="imu_processing" name="imu_processing" output="screen" ></node>
+</launch>
+
+
