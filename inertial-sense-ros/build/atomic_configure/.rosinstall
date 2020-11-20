@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/zyw/catkin_ws/src/isee_camvox/inertial-sense-ros/build/devel/setup.sh

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\convert_ins.cpp" />
+    <ClCompile Include="..\src\DataJSON.cpp" />
+    <ClCompile Include="..\src\DeviceLogJSON.cpp" />
+    <ClCompile Include="..\src\ISFileManager.cpp" />
+    <ClCompile Include="..\src\ISLogFile.cpp" />
+    <ClCompile Include="..\src\ring_buffer.c" />
+    <ClCompile Include="..\src\cltool.cpp" />
+    <ClCompile Include="..\src\cltool_main.cpp" />
+    <ClCompile Include="..\src\com_manager.c" />
+    <ClCompile Include="..\src\DataChunk.cpp" />
+    <ClCompile Include="..\src\DataChunkSorted.cpp" />
+    <ClCompile Include="..\src\DataCSV.cpp" />
+    <ClCompile Include="..\src\DataKML.cpp" />
+    <ClCompile Include="..\src\data_sets.c" />
+    <ClCompile Include="..\src\DeviceLog.cpp" />
+    <ClCompile Include="..\src\DeviceLogCSV.cpp" />
+    <ClCompile Include="..\src\DeviceLogKML.cpp" />
+    <ClCompile Include="..\src\DeviceLogSerial.cpp" />
+    <ClCompile Include="..\src\DeviceLogSorted.cpp" />
+    <ClCompile Include="..\src\InertialSense.cpp" />
+    <ClCompile Include="..\src\inertialSenseBootLoader.c" />
+    <ClCompile Include="..\src\ISDataMappings.cpp" />
+    <ClCompile Include="..\src\ISDisplay.cpp" />
+    <ClCompile Include="..\src\ISEarth.c" />
+    <ClCompile Include="..\src\ISLogger.cpp" />
+    <ClCompile Include="..\src\ISMatrix.c" />
+    <ClCompile Include="..\src\ISPose.c" />
+    <ClCompile Include="..\src\ISSerialPort.cpp" />
+    <ClCompile Include="..\src\ISComm.c" />
+    <ClCompile Include="..\src\ISStream.cpp" />
+    <ClCompile Include="..\src\ISTcpClient.cpp" />
+    <ClCompile Include="..\src\ISTcpServer.cpp" />
+    <ClCompile Include="..\src\ISUtilities.cpp" />
+    <ClCompile Include="..\src\linked_list.c" />
+    <ClCompile Include="..\src\serialPort.c" />
+    <ClCompile Include="..\src\serialPortPlatform.c" />
+    <ClCompile Include="..\src\time_conversion.c" />
+    <ClCompile Include="..\src\tinystr.cpp" />
+    <ClCompile Include="..\src\tinyxml.cpp" />
+    <ClCompile Include="..\src\tinyxmlerror.cpp" />
+    <ClCompile Include="..\src\tinyxmlparser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\convert_ins.h" />
+    <ClInclude Include="..\src\DataJSON.h" />
+    <ClInclude Include="..\src\DeviceLogJSON.h" />
+    <ClInclude Include="..\src\ISFileManager.h" />
+    <ClInclude Include="..\src\ISLogFile.h" />
+    <ClInclude Include="..\src\ISLogFileBase.h" />
+    <ClInclude Include="..\src\ISLogFileFactory.h" />
+    <ClInclude Include="..\src\ring_buffer.h" />
+    <ClInclude Include="..\src\cltool.h" />
+    <ClInclude Include="..\src\com_manager.h" />
+    <ClInclude Include="..\src\DataChunk.h" />
+    <ClInclude Include="..\src\DataChunkSorted.h" />
+    <ClInclude Include="..\src\DataCSV.h" />
+    <ClInclude Include="..\src\DataKML.h" />
+    <ClInclude Include="..\src\data_sets.h" />
+    <ClInclude Include="..\src\DeviceLog.h" />
+    <ClInclude Include="..\src\DeviceLogCSV.h" />
+    <ClInclude Include="..\src\DeviceLogKML.h" />
+    <ClInclude Include="..\src\DeviceLogSerial.h" />
+    <ClInclude Include="..\src\DeviceLogSorted.h" />
+    <ClInclude Include="..\src\InertialSense.h" />
+    <ClInclude Include="..\src\inertialSenseBootLoader.h" />
+    <ClInclude Include="..\src\InertialSenseSDK.h" />
+    <ClInclude Include="..\src\ISConstants.h" />
+    <ClInclude Include="..\src\ISDataMappings.h" />
+    <ClInclude Include="..\src\ISDisplay.h" />
+    <ClInclude Include="..\src\ISEarth.h" />
+    <ClInclude Include="..\src\ISLogger.h" />
+    <ClInclude Include="..\src\ISMatrix.h" />
+    <ClInclude Include="..\src\ISPose.h" />
+    <ClInclude Include="..\src\ISSerialPort.h" />
+    <ClInclude Include="..\src\ISComm.h" />
+    <ClInclude Include="..\src\ISStream.h" />
+    <ClInclude Include="..\src\ISTcpClient.h" />
+    <ClInclude Include="..\src\ISTcpServer.h" />
+    <ClInclude Include="..\src\ISUtilities.h" />
+    <ClInclude Include="..\src\linked_list.h" />
+    <ClInclude Include="..\src\serialPort.h" />
+    <ClInclude Include="..\src\serialPortPlatform.h" />
+    <ClInclude Include="..\src\time_conversion.h" />
+    <ClInclude Include="..\src\tinystr.h" />
+    <ClInclude Include="..\src\tinyxml.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{B6DF5042-23C7-42D9-976B-D313E6EA092C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>InertialSenseLib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Python27\include;C:\Users\netadmin\Documents\InertialSense\Repos\IS-src\cpp\SDK\pySDK\pybind11-2.1.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D "NOMINMAX" %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DisableSpecificWarnings>4003;4100;4204;4505;4706</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Users\netadmin\Documents\InertialSense\Repos\pybind11-2.1.1\include;C:\Python27\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D "NOMINMAX" %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DisableSpecificWarnings>4003;4100;4204;4505;4706</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="up" title="FatFs" href="../00index_e.html">
+<link rel="alternate" hreflang="ja" title="Japanese" href="../ja/dwrite.html">
+<link rel="stylesheet" href="../css_e.css" type="text/css" media="screen" title="ELM Default">
+<title>FatFs - disk_write</title>
+</head>
+
+<body>
+
+<div class="para func">
+<h2>disk_write</h2>
+<p>The disk_write writes sector(s) to the disk.</p>
+<pre>
+DRESULT disk_write (
+  BYTE <em>Drive</em>,          <span class="c">/* Physical drive number */</span>
+  const BYTE* <em>Buffer</em>,  <span class="c">/* Pointer to the write data (may be non aligned) */</span>
+  DWORD <em>SectorNumber</em>,  <span class="c">/* Sector number to write */</span>
+  BYTE <em>SectorCount</em>     <span class="c">/* Number of sectors to write */</span>
+);
+</pre>
+</div>
+
+<div class="para arg">
+<h4>Parameters</h4>
+<dl class="par">
+<dt>Drive</dt>
+<dd>Specifies the physical drive number.</dd>
+<dt>Buffer</dt>
+<dd>Pointer to the <em>byte array</em> to be written. Note that the specified memory address is not that always aligned to word boundary. If the hardware does not support misaligned data transfer, it must be solved in this function.</dd>
+<dt>SectorNumber</dt>
+<dd>Specifies the start sector number in logical block address (LBA).</dd>
+<dt>SectorCount</dt>
+<dd>Specifies the number of sectors to write. The value can be 1 to 128. Generally, a multiple sector transfer request must not be split into single sector transactions to the device, or you will never get good write performance.</dd>
+</dl>
+</div>
+
+
+<div class="para ret">
+<h4>Return Values</h4>
+<dl class="ret">
+<dt>RES_OK (0)</dt>
+<dd>The function succeeded.</dd>
+<dt>RES_ERROR</dt>
+<dd>Any hard error occured during the write operation and could not recover it.</dd>
+<dt>RES_WRPRT</dt>
+<dd>The medium is write protected.</dd>
+<dt>RES_PARERR</dt>
+<dd>Invalid parameter.</dd>
+<dt>RES_NOTRDY</dt>
+<dd>The disk drive has not been initialized.</dd>
+</dl>
+</div>
+
+
+<div class="para desc">
+<h4>Description</h4>
+<p>This function is not required in read only configuration.</p>
+</div>
+
+
+<p class="foot"><a href="../00index_e.html">Return</a></p>
+</body>
+</html>

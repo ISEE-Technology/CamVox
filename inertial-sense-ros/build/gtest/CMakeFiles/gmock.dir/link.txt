@@ -1,0 +1,1 @@
+/usr/bin/x86_64-linux-gnu-g++-5  -fPIC -g  -shared -Wl,-soname,libgmock.so -o libgmock.so CMakeFiles/gmock.dir/usr/src/gtest/src/gtest-all.cc.o CMakeFiles/gmock.dir/src/gmock-all.cc.o -lpthread 

@@ -1,0 +1,8 @@
+prefix=/home/zyw/catkin_ws/src/isee_camvox/inertial-sense-ros/build/devel
+
+Name: inertial_sense
+Description: Description of inertial_sense
+Version: 1.1.1
+Cflags: -I/home/zyw/catkin_ws/src/isee_camvox/inertial-sense-ros/build/devel/include -I/home/zyw/catkin_ws/src/isee_camvox/inertial-sense-ros/include
+Libs: -L${prefix}/lib -linertial_sense_ros
+Requires: roscpp sensor_msgs geometry_msgs

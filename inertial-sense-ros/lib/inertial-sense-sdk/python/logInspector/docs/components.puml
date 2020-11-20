@@ -1,0 +1,24 @@
+@startuml name
+rectangle "Python" {
+    component [Log Inspector] as LogInspector
+    component [logReader] as LogReader
+    component [logPlotter] as LogPlotter
+    component [PyQt5] as PyQt5
+    component [matplotlib] as matplotlib
+
+    LogInspector -down-> LogReader
+    LogInspector -down-> LogPlotter
+    LogInspector -down-> PyQt5
+    LogInspector -down-> matplotlib
+    LogPlotter -down-> matplotlib
+}
+
+
+rectangle "C++" {
+    component [LogReader] as log_reader_cpp
+}
+
+LogReader -down-> Pybind11
+Pybind11 -down-> log_reader_cpp
+log_reader_cpp -down-> logs
+@enduml

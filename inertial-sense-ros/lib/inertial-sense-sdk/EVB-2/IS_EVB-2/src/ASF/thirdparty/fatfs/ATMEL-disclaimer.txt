@@ -1,0 +1,4 @@
+/*
+ * The fatfs folder contains a modified image of the FatFS r0.09 to
+ * fit with the Atmel Software Framework release.
+ */
