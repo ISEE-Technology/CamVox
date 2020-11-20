@@ -122,5 +122,5 @@ The repository is from [**ISEE**](https://isee.technology/).
 
 ## 6. License
 
-The source code is released under [GPLv2](http://www.gnu.org/licenses/) license.
+The source code is released under [GPLv2.0](http://www.gnu.org/licenses/) license.
 
