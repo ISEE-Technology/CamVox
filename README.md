@@ -117,8 +117,8 @@ The effects of automatic calibration is shown as follows.
 ```
 
 ## 5. Acknowledgements
-The authors thank for [ORB_SLAM2](https://github.com/raulmur/ORB_SLAM2)[[ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras](https://128.84.21.199/pdf/1610.06475.pdf)] and colleagues at Livox Technology.<br/>
-The repository is from [ISEE Research Group](https://isee.technology/) at SUSTech.
+The authors are grateful for the pioneering work from [ORB_SLAM2](https://github.com/raulmur/ORB_SLAM2)[ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras](https://ieeexplore.ieee.org/document/7946260). The authors also sincerely thank colleagues at Livox Technology for help in data aquisition and discussion.<br/>
+This work is from [ISEE Research Group](https://isee.technology/) at SUSTech.
 
 ## 6. License
 
