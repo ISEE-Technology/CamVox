@@ -124,5 +124,16 @@ This work is from [ISEE Research Group](https://isee.technology/) at SUSTech.
 
 ## 6. License
 
-The source code is released under [GPLv2.0](http://www.gnu.org/licenses/) license.
+The source code is released under [GPLv2.0](http://www.gnu.org/licenses/) license. 
+
+If you use CamVox in an academic work, please cite:
+
+      @misc{zhu2020camvox,
+      title={CamVox: A Low-cost and Accurate Lidar-assisted Visual SLAM System}, 
+      author={Yuewen Zhu and Chunran Zheng and Chongjian Yuan and Xu Huang and Xiaoping Hong},
+      year={2020},
+      eprint={2011.11357},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+      }
 
