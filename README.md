@@ -13,6 +13,8 @@ We propose **CamVox** by adapting Livox lidars into visual SLAM (ORB-SLAM2) by e
 
 **Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://www.bilibili.com/video/BV1fZ4y1V795/)]. 
 
+**Paper**: our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357).
+
 ## 1. Prerequisites
 ### 1.1 Ubuntu and ROS
 Ubuntu 64-bit 16.04 or 18.04.
