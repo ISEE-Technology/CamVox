@@ -17,6 +17,13 @@ make -j16
 
 cd ../../../
 
+echo "Uncompress vocabulary ..."
+
+cd Vocabulary
+tar -xf ORBvoc.txt.tar.gz
+
+cd ..
+
 echo "Configuring and building Camvox ..."
 
 mkdir build
