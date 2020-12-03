@@ -101,7 +101,8 @@ Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver instal
 
 ### 4.1 SUSTech Dataset (Loop Closure)
 
-We open sourced our dataset in SUSTech campus with loop closure. [Download here](https://drive.google.com/file/).
+We open sourced our dataset in SUSTech campus with loop closure. [Download here](https://1drv.ms/u/s!ArbY73Gm3ncciawc5zwMWb6tuvEkpA). </br>
+Other framework data formats  for comparison. [VINS-mono](https://1drv.ms/u/s!ArbY73Gm3ncciawbxaSpc0ZYXogGVQ) | [livox_loam_horizon](https://1drv.ms/u/s!ArbY73Gm3ncciawYk8nceYiPfDXsVg).
 
 ### 4.2 Rosbag Example with static scenes (Automatic Calibration trigger)
 
@@ -136,4 +137,3 @@ If you use CamVox in an academic work, please cite:
       archivePrefix={arXiv},
       primaryClass={cs.RO}
       }
-
