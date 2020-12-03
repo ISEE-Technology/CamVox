@@ -121,6 +121,7 @@ The effects of automatic calibration is shown as follows.
 
 ### 4.3 Running
 ```bash
+    cd CamVox/isee-camvox
     rosrun online camvox Vocabulary/ORBvoc.bin camvox/offline/Livox.yaml 1000
     rosbag play YOUR_DOWNLOADED.bag
 ```
