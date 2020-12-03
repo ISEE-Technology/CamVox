@@ -36,6 +36,7 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
 ```bash
     tar zxvf MVS-2.0.0_x86_64_20191126.tar.gz
+    cd ./MVS-2.0.0_x86_64_20191126
     chmod +x setup.sh
     sudo ./setup.sh
 ```
