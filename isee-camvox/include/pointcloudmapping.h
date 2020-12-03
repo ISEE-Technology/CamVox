@@ -1,17 +1,3 @@
-/* @file  Namespace::class -> Camvox::PointCloudMapping
- * @brief - 
- * @funct   
- * @funct   
- * @funct   
- * @funct   
- * @funct   
- * @funct     
- * @value - 
- * @state - 
- * @flag  - 
- * thread -
- */
-
 #ifndef POINTCLOUDMAPPING_H
 #define POINTCLOUDMAPPING_H
 

@@ -1,5 +1,0 @@
-/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/edit_cache.dir
-/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/Camvox.dir
-/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/bin_vocabulary.dir
-/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/camvox_rgbd.dir
-/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/rebuild_cache.dir

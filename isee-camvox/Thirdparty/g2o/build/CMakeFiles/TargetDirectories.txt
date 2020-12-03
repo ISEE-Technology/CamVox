@@ -1,3 +1,0 @@
-/home/zyw/catkin_ws/src/ORB-SLAM2_RGBD_DENSE_MAP/Thirdparty/g2o/build/CMakeFiles/edit_cache.dir
-/home/zyw/catkin_ws/src/ORB-SLAM2_RGBD_DENSE_MAP/Thirdparty/g2o/build/CMakeFiles/rebuild_cache.dir
-/home/zyw/catkin_ws/src/ORB-SLAM2_RGBD_DENSE_MAP/Thirdparty/g2o/build/CMakeFiles/g2o.dir

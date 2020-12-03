@@ -11,7 +11,7 @@
 using namespace std;
 using namespace cv;
 
-cv::Mat last_img,current_img,im;
+cv::Mat last_img,current_img,im_copy,im;
 
 namespace Camvox
 {
@@ -42,8 +42,8 @@ namespace Camvox
 
     void Viewer::Run()
     {
-        int number =0;
-
+        int number = 0;
+        int sflag = 0;
         mbFinished = false;
         mbStopped = false;
 
@@ -86,7 +86,6 @@ namespace Camvox
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             mpMapDrawer->GetCurrentOpenGLCameraMatrix(Twc);
-            
             
             if (menuCalibratingtion && !bCalibratingtionMode)                  //! lidar_camera Calibratingtion
             {
@@ -132,15 +131,16 @@ namespace Camvox
                 mpMapDrawer->DrawKeyFrames(menuShowKeyFrames, menuShowGraph);
             if (menuShowPoints)
                 mpMapDrawer->DrawMapPoints();
-
             pangolin::FinishFrame();
             
-            last_img = im;                               //! last img
+            last_img = im.clone();                               //! last img
             im = mpFrameDrawer->DrawFrame();             //! current img
-            current_img = im;
+            current_img = im.clone();
+            //im_copy = im.clone();
+            im_copy = mpTracker->mImRGB.clone();
 
             /*...TODO...*/
-            if((im.data)&&(last_img.data))
+            if((!im.empty())&&(!last_img.empty()))
             {
                 double t = (double)cvGetTickCount();
                 bool result = judgemovement(last_img,current_img); 
@@ -149,23 +149,33 @@ namespace Camvox
                 if (result == true)
                 {
                     number = 0;
-                    putText(im, "Robot is moving.", Point(50, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 4, 8); //在图片上写文字
-                    //std::cout << "Robot is moving" << endl;
+                    putText(im, "Robot is moving", Point(50, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 4, 8); //在图片上写文字
                 }
                 else
                 {
                     number++;
-                    putText(im, "Robot is still.", Point(50, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 255, 0), 4, 8); //在图片上写文字
-                    //std::cout << "Robot is still"  << endl;
+                    putText(im, "Robot is still", Point(50, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 255, 0), 4, 8); //在图片上写文字
                 }
-
-                if(number==20)
+                if(number==10)
                 {
-                    //mpSLAM->ActivateCalibratingtionMode();
+                    cv::imwrite("./camvox/calibration/calibration.bmp", im_copy);
+                    cout << "Robot keep 1s still !" << endl;
+                    putText(im, "Robot keep 1s still !", Point(1200, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 4, 8); //在图片上写文字
+                    mpSystem->ActivateCalibratingtionMode();
+                    sflag = 1;
                 }
-                else
+                else if(number == 100)
                 {
-                    //mpSLAM->DeactivateCalibratingtionMode();
+                    number = 0;
+                    sflag = 0;
+                    //mpSystem->ActivateCalibratingtionMode();
+                }
+                if((sflag==1)&&(number==0))
+                {
+                    cout << "cancel calibration !" << endl;
+                    putText(im, "cancel calibration !", Point(1200, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 4, 8); //在图片上写文字
+                    mpSystem->DeactivateCalibratingtionMode();
+                    sflag = 0;
                 }
             } 
             /*...TODO...*/
@@ -218,8 +228,6 @@ namespace Camvox
         //灰度化
         cvtColor(pre_frame,pre_frame,CV_BGR2GRAY);
         cvtColor(curr_frame,curr_frame,CV_BGR2GRAY);
-        //cvtColor(pre_frame,pre_frame,CV_RGB2GRAY);
-        //cvtColor(curr_frame,curr_frame,CV_RGB2GRAY);
         //两张灰度图进行差分
         GaussianBlur(pre_frame,pre_frame,Size(3,3),0);     //why blur
         GaussianBlur(curr_frame,curr_frame,Size(3,3),0);

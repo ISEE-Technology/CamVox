@@ -1,17 +1,11 @@
 #include "System.h"
 #include "Converter.h"
-
 #include <thread>
 #include <pangolin/pangolin.h>
 #include <iomanip>
 #include <time.h>
+const string strSettingPath = "./camvox/config/camera.yaml";
 
-const string strSettingPath = "/home/zyw/livox_cam_calib/config/camera.yaml";
-const string RGBPath = "/home/zyw/livox_cam_calib/data/CamVox/0.bmp";
-const string PcdPath = "/home/zyw/livox_cam_calib/data/CamVox/0.pcd";
-const string projectionType = "depth";
-bool isEnhanceImg = false;
-bool isFillImg = true;
 
 bool has_suffix(const std::string &str, const std::string &suffix)
 {
@@ -23,13 +17,8 @@ bool has_suffix(const std::string &str, const std::string &suffix)
 namespace Camvox
 {
 
-
-    System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,const bool bUseViewer) : mSensor(sensor), mpViewer(static_cast<Viewer *>(NULL)), mbReset(false), mbActivateLocalizationMode(false),
-                                            mbDeactivateLocalizationMode(false),mbActivateCalibratingtionMode(false),mbDeactivateCalibratingtionMode(false)
+    System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,const bool bUseViewer) : mSensor(sensor), mpViewer(static_cast<Viewer *>(NULL)), mbReset(false), mbActivateLocalizationMode(false),mbDeactivateLocalizationMode(false),mbActivateCalibratingtionMode(false),mbDeactivateCalibratingtionMode(false),CalibrationFlag(0)
     {
-        
-
-
         // Output welcome message
         cout << endl
              << "Camvox Copyright (C) 2020 ISEE, University of SUSTech." << endl
@@ -87,15 +76,13 @@ namespace Camvox
         // Initialize pointcloud mapping
         mpPointCloudMapping = make_shared<PointCloudMapping>(resolution, meank, thresh);                                    //*动态内存中分配一个对象并初始化它 pointcouldMapping r m t setting
 
-
         //Initialize the Calibrating thread and launch
-        mpCalibratingter = new Calibrating(strSettingPath,RGBPath,PcdPath,projectionType,isEnhanceImg,isFillImg);
+        mpCalibratingter = new Calibrating(strSettingPath);
         mptCalibrating = new thread(&Camvox::Calibrating::Run, mpCalibratingter);
 
         //Initialize the Tracking thread
         //(it will live in the main thread of execution, the one that called this constructor)
-        mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer,
-                                 mpMap, mpPointCloudMapping, mpKeyFrameDatabase, strSettingsFile, mSensor);                  //* tracking thread include PointcloudMapping
+        mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer, mpMap, mpPointCloudMapping, mpKeyFrameDatabase, strSettingsFile, mSensor);   //* tracking thread include PointcloudMapping
         
         //Initialize the Local Mapping thread and launch
         mpLocalMapper = new LocalMapping(mpMap, mSensor == MONOCULAR);
@@ -145,13 +132,11 @@ namespace Camvox
             if (mbActivateLocalizationMode)
             {
                 mpLocalMapper->RequestStop();
-
                 // Wait until Local Mapping has effectively stopped
                 while (!mpLocalMapper->isStopped())
                 {
                     usleep(1000);
                 }
-
                 mpTracker->InformOnlyTracking(true);
                 mbActivateLocalizationMode = false;
             }
@@ -161,27 +146,26 @@ namespace Camvox
                 mpLocalMapper->Release();
                 mbDeactivateLocalizationMode = false;
             }
-       
         }
 
-         // Check Calibratingtion mode change
+        // Check Calibratingtion mode change
         {
             unique_lock<mutex> lock(mMutexMode);
             if (mbActivateCalibratingtionMode)
             {
+                CalibrationFlag = 1 ;
                 mpCalibratingter->InformCalibrating(true);
                 mbActivateCalibratingtionMode = false;
             }
             if (mbDeactivateCalibratingtionMode)
             {
+                CalibrationFlag = 2 ;
                 mpCalibratingter->InformCalibrating(false);
                 mpCalibratingter->Release();
                 mbDeactivateCalibratingtionMode = false;
             }
-       
         }
         
-
         // Check reset
         {
             unique_lock<mutex> lock(mMutexReset);
@@ -191,10 +175,8 @@ namespace Camvox
                 mbReset = false;
             }
         }
-
         cv::Mat Tcw = mpTracker->GrabImageRGBD(im, depthmap, timestamp);
-
-        unique_lock<mutex> lock2(mMutexState);                                                                            //! S-FLAG of Tracking state mappoints keypoints
+        unique_lock<mutex> lock2(mMutexState);                                                                     //! S-FLAG of Tracking state mappoints keypoints
         mTrackingState = mpTracker->mState;
         mTrackedMapPoints = mpTracker->mCurrentFrame.mvpMapPoints;
         mTrackedKeyPointsUn = mpTracker->mCurrentFrame.mvKeysUn;

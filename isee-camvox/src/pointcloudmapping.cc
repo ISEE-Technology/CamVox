@@ -2,7 +2,6 @@
 #include "Converter.h"
 #include "PointCloude.h"
 #include "System.h"
-
 #include <KeyFrame.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <pcl/visualization/cloud_viewer.h>
@@ -36,13 +35,11 @@ namespace Camvox
 
     void PointCloudMapping::insertKeyFrame(KeyFrame *kf, cv::Mat &color, cv::Mat &depth, long int idk, vector<KeyFrame *> vpKFs)
     {
-        cout << "receive a keyframe, id = " << idk << " 第" << kf->mnId << "个" << endl;
+        //cout << "receive a keyframe, id = " << idk << " 第" << kf->mnId << "个" << endl;
         //cout<<"vpKFs数量"<<vpKFs.size()<<endl;
         unique_lock<mutex> lck(keyframeMutex);
         keyframes.push_back(kf);
         currentvpKFs = vpKFs;
-        //colorImgs.push_back( color.clone() );
-        //depthImgs.push_back( depth.clone() );
         PointCloude pointcloude;
         pointcloude.pcID = idk;
         pointcloude.T = Camvox::Converter::toSE3Quat(kf->GetPose());
@@ -143,7 +140,7 @@ namespace Camvox
             voxel.filter(*globalMap);
             //globalMap->swap( *tmp );
             viewer.showCloud(globalMap);
-            cout << "show global map, size=" << N << "   " << globalMap->points.size() << endl;
+           // cout << "show global map, size=" << N << "   " << globalMap->points.size() << endl;
             lastKeyframeSize = N;
             cloudbusy = false;
             //*globalMap = *tmp1;

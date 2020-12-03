@@ -23,10 +23,9 @@
 #include <pcl/features/principal_curvatures.h>
 #include <pcl/io/io.h>
 #include <pcl/io/pcd_io.h>
-#include <pcl/kdtree/kdtree_flann.h>
+#include <pcl/kdtree/kdtree_flann.h>   
 #include <pcl/point_cloud.h>
-#include <pcl/visualization/pcl_visualizer.h>
-
+//#include <pcl/visualization/pcl_visualizer.h>
 
 using namespace Eigen;
 using namespace cv;
@@ -54,12 +53,14 @@ namespace Camvox
         // matrix vector
         float best_r_, best_p_, best_y_;
         int optimize_type;
+        bool cumulative_flag;
         Rect rect_;
         Matrix3d Rcl;
         Mat origin_RGB_, imdepth_, imRGB_, imGray_, imIntensity_, imdepth_true_, imdepth8_, imIntensity8_, rgb_canny_, intensity_canny_, depth_canny_;
         vector<Vec4i> hierarchy_RGB_, hierarchy_imdepth_, hierarchy_intensity_, hierarchy_depth_intensity_;
         vector<vector<Point>> contours_RGB_, contours_imdepth_, contours_intensity_, contours_depth_intensity_;
         ProjectionType projection_type_;
+        
 
         // kdtree and pcd setting
         pcl::KdTreeFLANN<pcl::PointXYZ> kdtree_;
@@ -67,7 +68,8 @@ namespace Camvox
         pcl::PointCloud<pcl::PointXYZ>::Ptr rgb_cloud_xyz_, lidar_cloud_xyz_, rgb_use_cloud_, lidar_use_cloud_;
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr rgb_cloud_xyzrgb_, lidar_cloud_xyzrgb_, rgb_use_cloud_xyzrgb_, lidar_use_cloud_xyzrgb_;
 
-        Calibrating(string _strSettingPath, string _RGB_path, string _Pcd_path, string _Projection_type, bool _isEnhanceImg, bool _isFillImg);                                           //构造
+        Calibrating(string _strSettingPath);   
+        void initialize(string _RGB_path,string _Pcd_path, string _Projection_type, bool _isEnhanceImg, bool _isFillImg);                                        //构造
         bool loadPcd(const std::string &pcd_file);                                                                                                                                       //加载PCD
         bool loadParams(const std::string &filename);                                                                                                                                    //加载参数
         void Projection(const ProjectionType projection_type, const Vector6d &extrinsic_params);                                                                                         //点云投影
@@ -118,6 +120,7 @@ namespace Camvox
         bool isFinished();
 
         bool mbCalibrating;
+        bool mbOptimizing;
         void InformCalibrating(const bool &flag);
 
 

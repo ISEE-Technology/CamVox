@@ -118,6 +118,10 @@ namespace Camvox
         int getloopcount();
         // point cloud mapping
         shared_ptr<PointCloudMapping> mpPointCloudMapping;                                                              //*  PointcloudMapping 对象声明
+        bool mbActivateCalibratingtionMode;
+        bool mbDeactivateCalibratingtionMode;
+        int CalibrationFlag;
+        Calibrating *mpCalibratingter;
 
     private:
 
@@ -138,8 +142,8 @@ namespace Camvox
         // It also decides when to insert a new keyframe, create some new MapPoints and
         // performs relocalization if tracking fails.
         //! five thread
-        // Calibratingter between lidar and camera automatic
-        Calibrating *mpCalibratingter;
+        //Calibratingter between lidar and camera automatic
+        
 
         Tracking *mpTracker;
 
@@ -171,8 +175,8 @@ namespace Camvox
         // Change mode flags
         std::mutex mMutexMode;
         //!lidar_camera_Calibratingtion
-        bool mbActivateCalibratingtionMode;
-        bool mbDeactivateCalibratingtionMode;
+        
+        
 
         bool mbActivateLocalizationMode;
         bool mbDeactivateLocalizationMode;

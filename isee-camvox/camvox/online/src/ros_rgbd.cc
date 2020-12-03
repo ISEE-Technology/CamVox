@@ -15,11 +15,29 @@
 #include "ctime"
 #include "time.h"
 
+#include <pcl_conversions/pcl_conversions.h>
+#include <sensor_msgs/PointCloud2.h>
+#include "CustomMsg.h"
+#include "common.h"
+
 using namespace Eigen;
 using namespace cv;
 using namespace std;
 
+
+int num = 0, Activate_flag = 0, Cumulative_flag = 0;
 rosbag::Bag bag_record;
+std::vector<livox_ros_driver::CustomMsgConstPtr> livox_data;
+livox_ros_driver::CustomMsg livox_cloud;
+
+struct pointData
+{
+    float x;
+    float y;
+    float z;
+    int i;
+};
+vector<pointData> vector_data;
 
 #if 0
 string int2string(int value)
@@ -39,6 +57,82 @@ public:
     Camvox::System *mpSLAM;
 };
 
+//****************************pcd title***********************************//
+void writeTitle(const string filename, unsigned long point_num) 
+{
+    ofstream outfile(filename.c_str(), ios_base::out);
+    if (!outfile) 
+    {
+        cout << "Can not open the file: " << filename << endl;
+        exit(0);
+    }
+    else 
+    {
+        outfile << "# .PCD v.7 - Point Cloud Data file format" << endl;
+        outfile << "VERSION .7" << endl;
+        outfile << "FIELDS x y z intensity" << endl;
+        outfile << "SIZE 4 4 4 4" << endl;
+        outfile << "TYPE F F F F" << endl;
+        outfile << "COUNT 1 1 1 1" << endl;
+        outfile << "WIDTH " << long2str(point_num) << endl;
+        outfile << "HEIGHT 1" << endl;
+        outfile << "VIEWPOINT 0 0 0 1 0 0 0" << endl;
+        outfile << "POINTS " << long2str(point_num) << endl;
+        outfile << "DATA ascii" << endl;
+    }
+    ROS_INFO("Save file %s", filename.c_str());
+}
+//*************************pcd write to file**************************************//
+void writePointCloud(const string filename, const vector<pointData> singlePCD) 
+{
+    ofstream outfile(filename.c_str(), ios_base::app);
+    if (!outfile) 
+    {
+        cout << "Can not open the file: " << filename << endl;
+        exit(0);
+    }
+    else 
+    {   
+        for (unsigned long i = 0; i < singlePCD.size(); ++i) 
+        {
+            outfile << float2str(singlePCD[i].x) << " " << float2str(singlePCD[i].y) << " " << float2str(singlePCD[i].z) << " " << int2str(singlePCD[i].i) << endl;
+        }
+    }
+}
+
+void LivoxMsgCbk(const livox_ros_driver::CustomMsgConstPtr &livox_msg_in)
+{
+    if (Activate_flag)
+    {
+        livox_cloud = *(livox_msg_in);
+        for(uint i = 0; i < livox_cloud.point_num; ++i) 
+        {
+            pointData myPoint;
+            myPoint.x = livox_cloud.points[i].x;
+            myPoint.y = livox_cloud.points[i].y;
+            myPoint.z = livox_cloud.points[i].z;
+            myPoint.i = livox_cloud.points[i].reflectivity;
+            vector_data.push_back(myPoint);
+        }
+        ++num;
+        cout << "SLAM-ActivateCalibrationMode-count = " << num << endl;
+        if (num == 90)
+        {
+           writeTitle("./camvox/calibration/calibration.pcd", vector_data.size());
+           writePointCloud("./camvox/calibration/calibration.pcd", vector_data);
+           vector_data.clear();
+           num = 0;
+           Cumulative_flag = 1;
+        }
+    }
+    if (!(Activate_flag))
+    {
+       num = 0 ;
+       livox_data.clear();
+       vector_data.clear();
+       Cumulative_flag = 0;
+    }
+}
 
 int main(int argc, char **argv)
 {
@@ -61,6 +155,7 @@ int main(int argc, char **argv)
     ImageGrabber igb(&SLAM);
     ros::NodeHandle nh;
 
+    ros::Subscriber sub_livox_msg = nh.subscribe<livox_ros_driver::CustomMsg>("/livox/lidar", 1, LivoxMsgCbk);
 #if 0
     ROS_INFO("start message filter");
     cerr << endl << "start message filter" << endl;
@@ -87,6 +182,26 @@ int main(int argc, char **argv)
     while (ros::ok() and igb.count <= atoi(argv[3]))
     {
         ros::spinOnce();
+        if (SLAM.CalibrationFlag == 1)
+        {
+           Activate_flag = 1;
+        }
+        
+        if (SLAM.CalibrationFlag == 2)
+        {
+           Activate_flag = 0;
+        }
+
+        if (Cumulative_flag == 0)
+        {
+            SLAM.mpCalibratingter->cumulative_flag = false;
+        }
+
+        if (Cumulative_flag == 1)
+        {
+            SLAM.mpCalibratingter->cumulative_flag = true;
+            //cout<<"revise content"<<SLAM.mpCalibratingter->cumulative_flag<<endl;
+        }
         /*...TODO...*/
     }
 
@@ -140,9 +255,6 @@ void ImageGrabber::GrabRGBD(const sensor_msgs::ImageConstPtr &msgRGB, const sens
         ROS_ERROR("cv_bridge exception: %s", e.what());
         return;
     }
-
     mpSLAM->TrackRGBD(cv_ptrRGB->image, cv_ptrD->image, cv_ptrRGB->header.stamp.toSec());
     ++count;
 }
-
-

@@ -10,9 +10,6 @@ namespace Camvox
     FrameDrawer::FrameDrawer(Map *pMap) : mpMap(pMap)
     {
         mState = Tracking::SYSTEM_NOT_READY;
-        // 初始化图像显示画布
-        // 包括：图像、特征点连线形成的轨迹（初始化时）、框（跟踪时的MapPoint）、圈（跟踪时的特征点）
-        // ！！！固定画布大小为640*480
         mIm = cv::Mat(568, 1520, CV_8UC3, cv::Scalar(0, 0, 0));
     }
 
