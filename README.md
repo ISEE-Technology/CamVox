@@ -45,9 +45,9 @@ Clone the repository and catkin_make:
 ```bash
     cd ~/catkin_ws/src
     git clone https://github.com/ISEE-Technology/CamVox && cd ..
-    catkin_make
-    cd src/CamVox/isee-camvox && chmod +x build_camvox.sh	
-    ./build_camvox.sh
+    cd CamVox/isee-camvox && chmod +x build.sh && chmod +x build_ros.sh	
+    ./build_ros.sh
+    ./build.sh
     source ~/catkin_ws/devel/setup.bash
 ```
 ## 3. Run with Hardware
@@ -99,8 +99,7 @@ Hard synchronization is performed with all of these sensors by a trigger signal 
 Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver installation](https://github.com/Livox-SDK/livox_ros_driver).
 
 ```bash
-    chmod +x run.sh
-    ./run.sh
+    rosrun online camvox Vocabulary/ORBvoc.bin camvox/offline/Livox.yaml 1000
 ```
 
 
@@ -121,8 +120,7 @@ The effects of automatic calibration is shown as follows.
 
 ### 4.3 Running
 ```bash
-    chmod +x run.sh
-    ./run.sh
+    rosrun online camvox Vocabulary/ORBvoc.bin camvox/offline/Livox.yaml 1000
     rosbag play YOUR_DOWNLOADED.bag
 ```
 
