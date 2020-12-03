@@ -1,1 +1,0 @@
-/usr/bin/x86_64-linux-gnu-g++-5  -fPIC  -std=gnu++11 -fms-extensions -Wl,--no-as-needed -DPLATFORM_IS_LINUX -g  -shared -Wl,-soname,libinertial.so -o devel/lib/libinertial.so CMakeFiles/inertial_shared.dir/src/inertial_sense.cpp.o 

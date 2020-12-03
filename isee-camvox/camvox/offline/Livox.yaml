@@ -14,9 +14,9 @@ Camera.k1: -0.12
 Camera.k2: 0.1162
 Camera.p1: 0.0
 Camera.p2: 0.0
-#1520 568
-Camera.width: 1520  # 1520 1200
-Camera.height: 568   # 568 440
+
+Camera.width: 1520  
+Camera.height: 568   
 
 # Camera frames per second 
 Camera.fps: 10
@@ -62,10 +62,9 @@ Viewer.ViewpointY: -0.7
 Viewer.ViewpointZ: -1.8
 Viewer.ViewpointF: 500
 
-PointCloudMapping.Resolution: 0.005 #0.01
+PointCloudMapping.Resolution: 0.1 #0.01
 meank: 50
-thresh: 5.0 #2.0
-
+thresh: 2.0 #2.0
 
 
 # bf=b*f

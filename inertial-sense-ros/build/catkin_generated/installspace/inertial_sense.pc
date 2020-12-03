@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: inertial_sense
-Description: Description of inertial_sense
-Version: 1.1.1
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib -linertial_sense_ros
-Requires: roscpp sensor_msgs geometry_msgs

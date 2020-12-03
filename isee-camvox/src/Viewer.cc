@@ -136,8 +136,7 @@ namespace Camvox
             last_img = im.clone();                               //! last img
             im = mpFrameDrawer->DrawFrame();             //! current img
             current_img = im.clone();
-            //im_copy = im.clone();
-            im_copy = mpTracker->mImRGB.clone();
+            im_copy = im.clone();
 
             /*...TODO...*/
             if((!im.empty())&&(!last_img.empty()))

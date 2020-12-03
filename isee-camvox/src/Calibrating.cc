@@ -1205,9 +1205,9 @@ namespace Camvox
       if (cumulative_flag) //TODO
       {
         // optimizing extrinsic parameters
-        //mbOptimizing = false;
-        cumulative_flag = false;
         initialize(RGBPath,PcdPath,projectionType,isEnhanceImg,isFillImg);
+        mbOptimizing = false;
+        cumulative_flag = false;
         cout << "start iteration!" << endl;
         int iter_num = 15;
         float single_resolution = deg2rad(0.05);

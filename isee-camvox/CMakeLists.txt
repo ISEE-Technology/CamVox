@@ -10,8 +10,8 @@ ENDIF()
 
 MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3 -march=native")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3")
 
 # Check C++11 or C++0x support
 include(CheckCXXCompilerFlag)
@@ -38,9 +38,10 @@ if(NOT OpenCV_FOUND)
       message(FATAL_ERROR "OpenCV > 2.4.3 not found.")
    endif()
 endif()
+
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
-find_package( PCL REQUIRED )
+find_package(PCL 1.7 REQUIRED)
 
 include_directories(
 ${PROJECT_SOURCE_DIR}
@@ -48,12 +49,10 @@ ${PROJECT_SOURCE_DIR}/include
 ${EIGEN3_INCLUDE_DIR}
 ${Pangolin_INCLUDE_DIRS}
 ${PCL_INCLUDE_DIRS}
-${OpenCV_INCLUDE_DIRS}
 )
 
-add_definitions( ${PCL_DEFINITIONS} )
-link_directories( ${PCL_LIBRARY_DIRS} )
-
+add_definitions(${PCL_DEFINITIONS})
+link_directories(${PCL_LIBRARY_DIRS})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
 add_library(${PROJECT_NAME} SHARED
@@ -89,17 +88,13 @@ ${PCL_LIBRARIES}
 )
 
 # Build examples
-
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
-add_executable(camvox_rgbd 
-    camvox/offline/camvox_rgbd.cc)
+add_executable(camvox_rgbd camvox/offline/camvox_rgbd.cc)
 target_link_libraries(camvox_rgbd ${PROJECT_NAME})
 
 # Build tools
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/tools)
-add_executable(bin_vocabulary
-tools/bin_vocabulary.cc)
-target_link_libraries(bin_vocabulary ${PROJECT_NAME} )
+add_executable(bin_vocabulary tools/bin_vocabulary.cc)
+target_link_libraries(bin_vocabulary ${PROJECT_NAME})
 
 

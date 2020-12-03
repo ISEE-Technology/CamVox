@@ -1,2 +1,0 @@
-set(isee_synchronize_MESSAGE_FILES "/home/zyw/catkin_ws/src/camvox/isee-synchronize/msg/CustomPoint.msg;/home/zyw/catkin_ws/src/camvox/isee-synchronize/msg/CustomMsg.msg;/home/zyw/catkin_ws/src/camvox/isee-synchronize/msg/GPS.msg")
-set(isee_synchronize_SERVICE_FILES "/home/zyw/catkin_ws/src/camvox/isee-synchronize/srv/FirmwareUpdate.srv;/home/zyw/catkin_ws/src/camvox/isee-synchronize/srv/refLLAUpdate.srv")

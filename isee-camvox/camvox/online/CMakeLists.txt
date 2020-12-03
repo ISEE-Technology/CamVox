@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
-
+set(OpenCV_DIR /usr/local/include)
 # for Youcompleteme surpport
 set( CMAKE_EXPORT_COMPILE_COMMANDS "ON" )
-
+include_directories(/usr/include/pcl-1.7 )
 rosbuild_init()
 
 IF(NOT ROS_BUILD_TYPE)
@@ -33,9 +33,14 @@ endif()
 
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../../cmake_modules)
 
-find_package(OpenCV  QUIET)
+find_package(OpenCV 3.0 QUIET)
+if(NOT OpenCV_FOUND)
+   find_package(OpenCV 2.4.3 QUIET)
+   if(NOT OpenCV_FOUND)
+      message(FATAL_ERROR "OpenCV > 2.4.3 not found.")
+   endif()
+endif()
 
-find_package( PCL REQUIRED )
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
@@ -44,16 +49,12 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 include_directories(
+include
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/../../
 ${PROJECT_SOURCE_DIR}/../../include
 ${Pangolin_INCLUDE_DIRS}
-${PCL_INCLUDE_DIRS}
-${OpenCV_INCLUDE_DIRS}
 )
-
-add_definitions( ${PCL_DEFINITIONS} )
-link_directories( ${PCL_LIBRARY_DIRS} )
 
 set(LIBS 
 ${OpenCV_LIBS} 
@@ -64,15 +65,14 @@ ${PROJECT_SOURCE_DIR}/../../Thirdparty/g2o/lib/libg2o.so
 ${PROJECT_SOURCE_DIR}/../../lib/libCamvox.so
 ${PROJECT_SOURCE_DIR}/../../lib/libboost_filesystem.so
 ${PROJECT_SOURCE_DIR}/../../lib/libboost_system.so
-${PCL_LIBRARIES}
+${PROJECT_SOURCE_DIR}/../../lib/libopencv_core3.so
 )
 
-# Node for RGB-D camera
 rosbuild_add_executable(camvox
 src/ros_rgbd.cc
 )
 
 target_link_libraries(camvox
-${LIBS} ${catkin_LIBRARIES} 
+${LIBS} ${catkin_LIBRARIES}
 )
 

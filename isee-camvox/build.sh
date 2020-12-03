@@ -21,7 +21,7 @@ echo "Configuring and building Camvox ..."
 
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. 
 make 
 
 cd ..

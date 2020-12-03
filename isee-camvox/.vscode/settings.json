@@ -1,60 +1,45 @@
 {
-    "files.associations": {
-        "iostream": "cpp",
-        "mutex": "cpp",
-        "cctype": "cpp",
-        "clocale": "cpp",
-        "cmath": "cpp",
-        "csignal": "cpp",
-        "cstdarg": "cpp",
-        "cstddef": "cpp",
-        "cstdio": "cpp",
-        "cstdlib": "cpp",
-        "cstring": "cpp",
-        "ctime": "cpp",
-        "cwchar": "cpp",
-        "cwctype": "cpp",
-        "array": "cpp",
-        "atomic": "cpp",
-        "strstream": "cpp",
-        "*.tcc": "cpp",
-        "bitset": "cpp",
-        "chrono": "cpp",
-        "complex": "cpp",
-        "condition_variable": "cpp",
-        "cstdint": "cpp",
-        "deque": "cpp",
-        "list": "cpp",
-        "unordered_map": "cpp",
-        "vector": "cpp",
-        "exception": "cpp",
-        "algorithm": "cpp",
-        "functional": "cpp",
-        "ratio": "cpp",
-        "system_error": "cpp",
-        "tuple": "cpp",
-        "type_traits": "cpp",
-        "fstream": "cpp",
-        "initializer_list": "cpp",
-        "iomanip": "cpp",
-        "iosfwd": "cpp",
-        "istream": "cpp",
-        "limits": "cpp",
-        "memory": "cpp",
-        "new": "cpp",
-        "ostream": "cpp",
-        "numeric": "cpp",
-        "sstream": "cpp",
-        "stdexcept": "cpp",
-        "streambuf": "cpp",
-        "thread": "cpp",
-        "cfenv": "cpp",
-        "cinttypes": "cpp",
-        "utility": "cpp",
-        "typeindex": "cpp",
-        "typeinfo": "cpp",
-        "valarray": "cpp",
-        "*.ipp": "cpp"
-    },
-    "commentTranslate.targetLanguage": "zh-CN"
+    "doxdocgen.generic.paramTemplate": "@param[in] {param} ",
+	"todo-tree.highlights.defaultHighlight": {
+	"icon": "alert",
+	"type": "text",
+	"foreground": "red",
+	"iconColour": "green"
+	},
+	"todo-tree.general.tags": [
+	"?",
+	"!",
+	" Step "
+	],
+	"todo-tree.highlights.customHighlight": {
+	" Step ": {
+	"foreground": "#7CFC00",
+	"icon": "question",
+	"iconColour": "green",
+	"type": "text-and-comment",
+	"hideFromTree": true
+	},
+	"?": {
+	"foreground": "yellow",
+	"icon": "question",
+	"iconColour": "yellow",
+	"type": "text-and-comment"
+	},
+	"!": {
+	"foreground": "red",
+	"icon": "issue-opened",
+	"iconColour": "red",
+	"type": "text-and-comment"
+	}
+	},
+	"todo-tree.general.revealBehaviour": "highlight todo",
+	"todo-tree.tree.showCountsInTree": true,
+	"todo-tree.filtering.excludeGlobs":[
+	"**/*.txt",
+	"**/*.md"
+	],
+	"files.associations": {
+		"*.cc": "cpp",
+		"vector": "cpp"
+	}
 }
