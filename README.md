@@ -35,9 +35,9 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 ### 1.6 MVS camera driver
 Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
 ```bash
-	tar zxvf MVS-2.0.0_x86_64_20191126.tar.gz
-	chmod +x setup.sh
-	sudo ./setup.sh
+    tar zxvf MVS-2.0.0_x86_64_20191126.tar.gz
+    chmod +x setup.sh
+    sudo ./setup.sh
 ```
 ## 2. Build CamVox
 Clone the repository and catkin_make:
