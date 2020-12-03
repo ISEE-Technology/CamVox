@@ -44,7 +44,7 @@ Clone the repository and catkin_make:
 
 ```bash
     cd ~/catkin_ws/src
-    git clone https://github.com/ISEE-Technology/CamVox && cd ..
+    git clone https://github.com/ISEE-Technology/CamVox
     cd CamVox/isee-camvox && chmod +x build.sh && chmod +x build_ros.sh	
     ./build_ros.sh
     ./build.sh
