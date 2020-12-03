@@ -99,7 +99,8 @@ Hard synchronization is performed with all of these sensors by a trigger signal 
 Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver installation](https://github.com/Livox-SDK/livox_ros_driver).
 
 ```bash
-    rosrun online camvox Vocabulary/ORBvoc.bin camvox/offline/Livox.yaml 1000
+    chmod +x run.sh
+    ./run.sh
 ```
 
 
