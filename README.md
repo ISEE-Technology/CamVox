@@ -114,7 +114,7 @@ Other framework data formats  for comparison. [VINS-mono](https://1drv.ms/u/s!Ar
 
 ### 4.2 Rosbag Example with static scenes (Automatic Calibration trigger)
 
-We provide a rosbag file with static scenes to test the automatic calibration thread. [Download here](https://drive.google.com/file/). <br/>
+We provide a rosbag file with static scenes to test the automatic calibration thread. [Download here](https://1drv.ms/u/s!ArbY73Gm3nccia03bTsyrdgtss9deQ?e=kJ0ok3). <br/>
 When the car detects more than **20 frames of still images (about 2 seconds)**, the automatic calibration thread starts to work. The thread will be interrupted to enter the SLAM mode if the car starts to move before the end of calibration. 
 The effects of automatic calibration is shown as follows.
 
