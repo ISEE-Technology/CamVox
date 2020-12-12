@@ -43,6 +43,23 @@ Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
 ## 2. Build CamVox
 Clone the repository and catkin_make:
 
+
+### 2.1 supplement
+like ORB_SLAM, Add the path including /CamVox/isee-camvox/camvox to the ROS_PACKAGE_PATH environment variable. Open .bashrc file:
+```bash
+   gedit ~/.bashrc
+```
+and add at the end the following line. Replace PATH by the folder where you cloned camvox:
+```bash
+   export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:PATH/CamVox/isee-camvox/camvox
+```
+make sure the path  is added correctly: 
+```bash
+   source ~/.bashrc
+   echo $ROS_PACKAGE_PATH
+```
+
+build:
 ```bash
     cd ~/catkin_ws/src
     git clone https://github.com/ISEE-Technology/CamVox
