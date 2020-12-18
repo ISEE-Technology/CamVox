@@ -110,12 +110,13 @@ Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver instal
 ### 4.1 SUSTech Dataset (Loop Closure)
 
 We open sourced our dataset in SUSTech campus with loop closure. [Download here](https://1drv.ms/u/s!ArbY73Gm3ncciawc5zwMWb6tuvEkpA). </br>
-Other framework data formats  for comparison. [VINS-mono](https://1drv.ms/u/s!ArbY73Gm3ncciawbxaSpc0ZYXogGVQ) | [livox_loam_horizon](https://1drv.ms/u/s!ArbY73Gm3ncciawYk8nceYiPfDXsVg).
+Other framework data formats  for comparison. [VINS-mono](https://1drv.ms/u/s!ArbY73Gm3ncciawbxaSpc0ZYXogGVQ) | [livox_loam_horizon](https://1drv.ms/u/s!ArbY73Gm3ncciawYk8nceYiPfDXsVg). </br>
+[Ground truth](https://1drv.ms/u/s!ArbY73Gm3nccia5uJCooTjr6tIubJw?e=kv0d3B) collected by APX-15.
 
 ### 4.2 Rosbag Example with static scenes (Automatic Calibration trigger)
 
 We provide a rosbag file with static scenes to test the automatic calibration thread. [Download here](https://1drv.ms/u/s!ArbY73Gm3nccia03bTsyrdgtss9deQ?e=kJ0ok3). <br/>
-When the car detects more than **20 frames of still images (about 2 seconds)**, the automatic calibration thread starts to work. The thread will be interrupted to enter the SLAM mode if the car starts to move before the end of calibration. 
+When the car detects more than **10 frames of still images (about 1 second)**, the automatic calibration thread starts to work. The thread will be interrupted to enter the SLAM mode if the car starts to move before the end of calibration. 
 The effects of automatic calibration is shown as follows.
 
 <img src="./pics/runyang.gif" alt="show" width = 49% /> <img src="./pics/flat.gif" alt="show" width = 49%  />
