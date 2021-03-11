@@ -1,7 +1,10 @@
 # CamVox
 ## A Low-cost and Accurate Lidar-assisted Visual SLAM System
-<img src="./pics/horizon.gif" alt="show" width = 90% />
-<img src="./pics/CamVox.gif" alt="show" width = 90% />
+
+<div align=center>
+<img src="./pics/horizon.gif" alt="show" width = 80% />
+<img src="./pics/CamVox.gif" alt="show" width = 80% />
+</div>
 
 We propose **CamVox** by adapting Livox lidars into visual SLAM (ORB-SLAM2) by exploring the lidars’ unique features. Based on the non-repeating nature of Livox lidars, we propose an automatic lidar-camera calibration method that will work in uncontrolled scenes. The long depth detection range also beneﬁt a more efﬁcient mapping. Comparison of CamVox with visual SLAM (VINS-mono) and lidar SLAM (livox_horizon_loam) are evaluated on the same dataset to demonstrate the performance.
 
