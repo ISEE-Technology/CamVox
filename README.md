@@ -2,7 +2,7 @@
 ## A Low-cost and Accurate Lidar-assisted Visual SLAM System
 
 <div align=center>
-<img src="./pics/horizon.gif" alt="show" width = 80% />
+
 <img src="./pics/CamVox.gif" alt="show" width = 80% />
 </div>
 
