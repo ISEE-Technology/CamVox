@@ -1,0 +1,86 @@
+1. opencv-3.4.1
+   (1)  http://opencv.org/releases.html
+   (2)  install dependencies:
+		sudo apt-get install build-essential libgtk2.0-dev libavcodec-dev libavformat-dev  libjpeg.dev libtiff4.dev  libswscale-dev libjasper-dev    
+   (3) cd opencv-3.4.1:
+		mkdir build && cd build
+		cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+		make -j
+		sudo make install
+   (4)  add opencv libraries to path:
+		sudo gedit /etc/ld.so.conf.d/opencv.conf 
+        add in the end:  
+		/usr/local/lib 
+		sudo ldconfig
+   (5)  bash configurtion:
+		sudo gedit /etc/bash.bashrc  
+	add in the end:  
+		PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig  
+		export PKG_CONFIG_PATH  
+	source configurtion:
+		source /etc/bash.bashrc  
+		sudo updatedb
+
+2. pcl-1.7
+   (1)  sudo apt-get update
+   (2)  install VTK: https://vtk.org/download/
+	cd VTK-8.2.0
+	mkdir build && cd build
+	cmake ..
+	make -j
+	sudo make install
+   (3)  install pcl:
+	sudo apt-get install libpcl-dev pcl-tools
+	sudo apt-get install freeglut3-dev
+
+3. eigen-3.2.10
+   (1)  install eigen:
+	mkdir build && cd build
+	cmake ..
+	make -j
+	sudo make install
+
+4. Pangolin
+   (1)  git clone https://github.com/stevenlovegrove/Pangolin.git
+   (2)  install dependencies: 
+	sudo apt-get install libglew-dev libpython2.7-dev libboost-dev libboost-thread-dev libboost-filesystem-dev -y
+   (3)  install Pangolin:
+	cd Pangolin
+	mkdir build && cd build
+	cmake ..
+	make -j
+	sudo make intall
+
+5. Ceres-solver-1.14.0
+   (1)  https://github.com/ceres-solver/ceres-solver
+   (2)  install dependencies:
+	sudo apt-get install liblapack-dev 
+	sudo apt-get install libsuitesparse-dev 
+	sudo apt-get install libcxsparse3.1.2 
+	sudo apt-get install libgflags-dev 
+	sudo apt-get install libgoogle-glog-dev libgtest-dev
+   (3)  install ceres:
+	cd ceres-solver-1.14.0
+	mkdir build && cd build
+	cmake ..
+	make -j 
+	sudo make install
+
+6. Livox-SDK API
+   (1)  git clone https://github.com/Livox-SDK/Livox-SDK.git
+	cd Livox-SDK
+	mkdir build && cd build
+	cmake ..
+	make -j
+	sudo make install
+
+7. livox_ros_driver
+   (1)  mkdir -p catkin_ws/src
+   (2)  cd catkin_ws/src
+	git clone https://github.com/Livox-SDK/livox_ros_driver.git 
+	cd ..
+	catkin_make
+   (3)  source ./devel/setup.sh
+	
+	
+
