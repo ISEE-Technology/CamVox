@@ -60,15 +60,15 @@ include CMakeFiles/bin_vocabulary.dir/flags.make
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o: CMakeFiles/bin_vocabulary.dir/flags.make
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o: ../tools/bin_vocabulary.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o -c /home/zyw/catkin_ws/src/camvox/isee-camvox/tools/bin_vocabulary.cc
+	/usr/bin/x86_64-linux-gnu-g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o -c /home/zyw/catkin_ws/src/camvox/isee-camvox/tools/bin_vocabulary.cc
 
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zyw/catkin_ws/src/camvox/isee-camvox/tools/bin_vocabulary.cc > CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i
+	/usr/bin/x86_64-linux-gnu-g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zyw/catkin_ws/src/camvox/isee-camvox/tools/bin_vocabulary.cc > CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.i
 
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zyw/catkin_ws/src/camvox/isee-camvox/tools/bin_vocabulary.cc -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s
+	/usr/bin/x86_64-linux-gnu-g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zyw/catkin_ws/src/camvox/isee-camvox/tools/bin_vocabulary.cc -o CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.s
 
 CMakeFiles/bin_vocabulary.dir/tools/bin_vocabulary.cc.o.requires:
 

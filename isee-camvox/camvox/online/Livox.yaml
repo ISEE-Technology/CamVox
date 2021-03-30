@@ -64,10 +64,7 @@ Viewer.ViewpointF: 500
 
 PointCloudMapping.Resolution: 0.1 #0.01
 meank: 50
-thresh: 2.0 #2.0
+thresh: 1.0 #2.0
 
 
-# bf=b*f
-# bf * ThDepth / fx即大致为b * ThDepth
-# 基线在双目视觉中出现的比较多
-# EuRoC.yaml中的bf为47.9，ThDepth为35，fx为435.2，则有效深度为47.9*35/435.3=3.85米；KITTI.yaml中的bf为# 387.57，ThDepth为40，fx为721.54，则有效深度为387.57*40/721.54=21.5米
+

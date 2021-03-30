@@ -62,11 +62,7 @@ namespace Camvox
         vector<vector<Point>> contours_RGB_, contours_imdepth_, contours_intensity_, contours_depth_intensity_;
         ProjectionType projection_type_;
 
-        // kdtree and pcd setting
-        pcl::KdTreeFLANN<pcl::PointXYZ> kdtree_;
-        pcl::PointCloud<pcl::PointXYZI>::Ptr horizon_cloud_;
-        pcl::PointCloud<pcl::PointXYZ>::Ptr rgb_cloud_xyz_, lidar_cloud_xyz_, rgb_use_cloud_, lidar_use_cloud_;
-        pcl::PointCloud<pcl::PointXYZRGB>::Ptr rgb_cloud_xyzrgb_, lidar_cloud_xyzrgb_, rgb_use_cloud_xyzrgb_, lidar_use_cloud_xyzrgb_;
+        
 
         Calibrating(string _strSettingPath, string _RGB_path, string _Pcd_path, string _Projection_type, bool _isEnhanceImg, bool _isFillImg);                                           //构造
         bool loadPcd(const std::string &pcd_file);                                                                                                                                       //加载PCD
@@ -116,6 +112,8 @@ namespace Camvox
         bool mbCalibrating;
         bool mbOptimizing;
         void InformCalibrating(const bool &flag);
+        void InformOptimizing(const bool &flag);
+        
 
     protected:
 

@@ -89,12 +89,12 @@ namespace Camvox
             
             if (menuCalibratingtion && !bCalibratingtionMode)                 
             {
-                mpSystem->ActivateCalibratingtionMode();
+                mpSystem->ActivateCalibrationMode();
                 bCalibratingtionMode = true;
             }
             else if (!menuCalibratingtion && bCalibratingtionMode)
             {
-                mpSystem->DeactivateCalibratingtionMode();
+                mpSystem->DeactivateCalibrationMode();
                 bCalibratingtionMode = false;
             }
 
@@ -158,15 +158,17 @@ namespace Camvox
                     putText(im, "Robot is still", Point(50, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 255, 0), 4, 8); 
                 }
                 if(number==10)
-                {
-                    cv::imwrite("./camvox/calibration/calibration.bmp", im_copy);
+                {                 
                     cout << "Robot keep 1s still !" << endl;
                     putText(im, "Robot keep 1s still !", Point(1200, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 4, 8); 
-                    mpSystem->ActivateCalibratingtionMode();
+                    mpSystem->ActivateCalibrationMode();
                     sflag = 1;
                 }
                 else if(number == 100)
                 {
+
+                    //cv::imwrite("./camvox/calibration/calibration.bmp", im_copy);
+                    putText(im, "Start calibration optimizing !", Point(1200, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 4, 8); 
                     number = 0;
                     sflag = 0;
                 }
@@ -174,7 +176,7 @@ namespace Camvox
                 {
                     cout << "cancel calibration !" << endl;
                     putText(im, "cancel calibration !", Point(1200, 60), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 4, 8); //在图片上写文字
-                    mpSystem->DeactivateCalibratingtionMode();
+                    mpSystem->DeactivateCalibrationMode();
                     sflag = 0;
                 }
             } 
@@ -194,7 +196,7 @@ namespace Camvox
                 bLocalizationMode = false;
                 menuCalibratingtion = false;
                 if (bCalibratingtionMode)
-                    mpSystem->DeactivateCalibratingtionMode();
+                    mpSystem->DeactivateCalibrationMode();
                 bCalibratingtionMode = false;
                 bFollow = true;
                 menuFollowCamera = true;

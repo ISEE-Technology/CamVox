@@ -57,8 +57,10 @@ namespace Camvox
         void DeactivateLocalizationMode();
 
         //!  lidar_camera Calibratingtion
-        void ActivateCalibratingtionMode();
-        void DeactivateCalibratingtionMode();
+        void ActivateCalibrationMode();
+        void DeactivateCalibrationMode();
+        void ActivateCalibrationOptimizingMode();
+        void DeactivateCalibrationOptimizingMode();
 
         // Returns true if there have been a big map change (loop closure, global BA)
         // since last call to this function
@@ -103,8 +105,10 @@ namespace Camvox
         int getloopcount();
         // point cloud mapping
         shared_ptr<PointCloudMapping> mpPointCloudMapping;                                                            
-        bool mbActivateCalibratingtionMode;
-        bool mbDeactivateCalibratingtionMode;
+        bool mbActivateCalibrationMode;
+        bool mbDeactivateCalibrationMode;
+        bool mbActivateCalibrationOptimizingMode;
+        bool mbDeactivateCalibrationOptimizingMode;
         int CalibrationFlag;
     private:
 

@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8bdca/fast"
-/usr/bin/make -f CMakeFiles/cmTC_8bdca.dir/build.make CMakeFiles/cmTC_8bdca.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_b0d68/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b0d68.dir/build.make CMakeFiles/cmTC_b0d68.dir/build
 make[1]: Entering directory '/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8bdca.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -Wall  -O3      -o CMakeFiles/cmTC_8bdca.dir/CheckSymbolExists.c.o   -c /home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_8bdca
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8bdca.dir/link.txt --verbose=1
-/usr/bin/cc    -Wall  -O3       CMakeFiles/cmTC_8bdca.dir/CheckSymbolExists.c.o  -o cmTC_8bdca -rdynamic 
-CMakeFiles/cmTC_8bdca.dir/CheckSymbolExists.c.o：在函数‘main’中：
+Building C object CMakeFiles/cmTC_b0d68.dir/CheckSymbolExists.c.o
+/usr/bin/x86_64-linux-gnu-gcc-5    -Wall  -O3      -o CMakeFiles/cmTC_b0d68.dir/CheckSymbolExists.c.o   -c /home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_b0d68
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0d68.dir/link.txt --verbose=1
+/usr/bin/x86_64-linux-gnu-gcc-5    -Wall  -O3       CMakeFiles/cmTC_b0d68.dir/CheckSymbolExists.c.o  -o cmTC_b0d68 -rdynamic 
+CMakeFiles/cmTC_b0d68.dir/CheckSymbolExists.c.o：在函数‘main’中：
 CheckSymbolExists.c:(.text.startup+0x6)：对‘pthread_create’未定义的引用
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_8bdca.dir/build.make:97: recipe for target 'cmTC_8bdca' failed
-make[1]: *** [cmTC_8bdca] Error 1
+CMakeFiles/cmTC_b0d68.dir/build.make:97: recipe for target 'cmTC_b0d68' failed
+make[1]: *** [cmTC_b0d68] Error 1
 make[1]: Leaving directory '/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_8bdca/fast' failed
-make: *** [cmTC_8bdca/fast] Error 2
+Makefile:126: recipe for target 'cmTC_b0d68/fast' failed
+make: *** [cmTC_b0d68/fast] Error 2
 
 File /home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_13ca2/fast"
-/usr/bin/make -f CMakeFiles/cmTC_13ca2.dir/build.make CMakeFiles/cmTC_13ca2.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_486c2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_486c2.dir/build.make CMakeFiles/cmTC_486c2.dir/build
 make[1]: Entering directory '/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_13ca2.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -Wall  -O3   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_13ca2.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_13ca2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13ca2.dir/link.txt --verbose=1
-/usr/bin/cc    -Wall  -O3   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_13ca2.dir/CheckFunctionExists.c.o  -o cmTC_13ca2 -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTC_486c2.dir/CheckFunctionExists.c.o
+/usr/bin/x86_64-linux-gnu-gcc-5    -Wall  -O3   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_486c2.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_486c2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_486c2.dir/link.txt --verbose=1
+/usr/bin/x86_64-linux-gnu-gcc-5    -Wall  -O3   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_486c2.dir/CheckFunctionExists.c.o  -o cmTC_486c2 -rdynamic -lpthreads 
 /usr/bin/ld: 找不到 -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_13ca2.dir/build.make:97: recipe for target 'cmTC_13ca2' failed
-make[1]: *** [cmTC_13ca2] Error 1
+CMakeFiles/cmTC_486c2.dir/build.make:97: recipe for target 'cmTC_486c2' failed
+make[1]: *** [cmTC_486c2] Error 1
 make[1]: Leaving directory '/home/zyw/catkin_ws/src/camvox/isee-camvox/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_13ca2/fast' failed
-make: *** [cmTC_13ca2/fast] Error 2
+Makefile:126: recipe for target 'cmTC_486c2/fast' failed
+make: *** [cmTC_486c2/fast] Error 2
 
 

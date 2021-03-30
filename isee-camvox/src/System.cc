@@ -6,10 +6,10 @@
 #include <iomanip>
 #include <time.h>
 
-const string strSettingPath = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/config/camera.yaml";
-const string RGBPath = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/calibration/calibration.bmp";
-const string PcdPath = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/calibration/calibration.pcd"; 
-const string projectionType = "depth";
+string strSettingPath = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/config/camera.yaml";
+string RGBPath = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/calibration/calibration.bmp";
+string PcdPath = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/calibration/calibration.pcd"; 
+string projectionType = "both";
 bool isEnhanceImg = false;
 bool isFillImg = true;
 
@@ -21,7 +21,7 @@ bool has_suffix(const std::string &str, const std::string &suffix)
 
 namespace Camvox
 {
-    System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,const bool bUseViewer) : mSensor(sensor), mpViewer(static_cast<Viewer *>(NULL)), mbReset(false), mbActivateLocalizationMode(false),mbDeactivateLocalizationMode(false),mbActivateCalibratingtionMode(false),mbDeactivateCalibratingtionMode(false),CalibrationFlag(0)
+    System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,const bool bUseViewer) : mSensor(sensor), mpViewer(static_cast<Viewer *>(NULL)), mbReset(false), mbActivateLocalizationMode(false),mbDeactivateLocalizationMode(false),mbActivateCalibrationMode(false),mbDeactivateCalibrationMode(false),mbActivateCalibrationOptimizingMode(false),mbDeactivateCalibrationOptimizingMode(false),CalibrationFlag(0)
     {
         // Output welcome message
         cout << endl
@@ -155,21 +155,39 @@ namespace Camvox
         // Check Calibratingtion mode change
         {
             unique_lock<mutex> lock(mMutexMode);
-            if (mbActivateCalibratingtionMode)
+            if (mbActivateCalibrationMode)
             {
                 CalibrationFlag = 1 ;
                 mpCalibratingter->InformCalibrating(true);
-                mbActivateCalibratingtionMode = false;
+                mbActivateCalibrationMode = false;
             }
-            if (mbDeactivateCalibratingtionMode)
+            if (mbDeactivateCalibrationMode)
             {
                 CalibrationFlag = 2 ;
                 mpCalibratingter->InformCalibrating(false);
                 mpCalibratingter->Release();
-                mbDeactivateCalibratingtionMode = false;
+                mbDeactivateCalibrationMode = false;
             }
         }
         
+        // Check CalibratingtionOptimizing mode change
+        {
+            unique_lock<mutex> lock(mMutexMode);
+            if (mbActivateCalibrationOptimizingMode)
+            {
+                
+                mpCalibratingter->InformOptimizing(true);
+                mbActivateCalibrationOptimizingMode = false;
+            }
+            if (mbDeactivateCalibrationOptimizingMode)
+            {
+                
+                mpCalibratingter->InformOptimizing(false);
+                
+                mbDeactivateCalibrationOptimizingMode = false;
+            }
+        }
+
         // Check reset
         {
             unique_lock<mutex> lock(mMutexReset);
@@ -188,16 +206,28 @@ namespace Camvox
     }
 
                                                                                                                    
-    void System::ActivateCalibratingtionMode()
+    void System::ActivateCalibrationMode()
     {
         unique_lock<mutex> lock(mMutexMode);
-        mbActivateCalibratingtionMode = true;
+        mbActivateCalibrationMode = true;
     }
 
-    void System::DeactivateCalibratingtionMode()
+    void System::DeactivateCalibrationMode()
     {
         unique_lock<mutex> lock(mMutexMode);
-        mbDeactivateCalibratingtionMode = true;
+        mbDeactivateCalibrationMode = true;
+    }
+
+    void System::ActivateCalibrationOptimizingMode()
+    {
+        unique_lock<mutex> lock(mMutexMode);
+        mbActivateCalibrationOptimizingMode = true;
+    }
+
+    void System::DeactivateCalibrationOptimizingMode()
+    {
+        unique_lock<mutex> lock(mMutexMode);
+        mbDeactivateCalibrationOptimizingMode = true;
     }
 
     void System::ActivateLocalizationMode()
