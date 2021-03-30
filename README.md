@@ -153,8 +153,8 @@ Clone the repository and catkin_make:
     cd ~/catkin_ws/src
     git clone https://github.com/ISEE-Technology/CamVox.git
     cd CamVox/isee-camvox && chmod a+x build.sh && chmod a+x build_ros.sh
-    ./build_ros.sh
     ./build.sh
+    ./build_ros.sh
     source ~/catkin_ws/devel/setup.bash
 ```
 ## 3. Run with Hardware
