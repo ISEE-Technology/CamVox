@@ -100,7 +100,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
 ```bash
-   (1)  *** install dependencies: ***
+   (1)  *** install dependencies:***
         sudo apt-get install liblapack-dev 
         sudo apt-get install libsuitesparse-dev 
         sudo apt-get install libcxsparse3.1.2 
