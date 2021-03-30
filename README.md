@@ -36,26 +36,26 @@ We use OpenCV to manipulate images and features. Follow [Opencv Installation](ht
 
 ```bash
    (1)  *** Install dependencies: ***
-		sudo apt-get install build-essential libgtk2.0-dev libavcodec-dev libavformat-dev  libjpeg.dev libtiff4.dev  libswscale-dev libjasper-dev   
+	sudo apt-get install build-essential libgtk2.0-dev libavcodec-dev libavformat-dev  libjpeg.dev libtiff4.dev  libswscale-dev libjasper-dev   
    (2)  *** Install opencv-3.4.1: ***
-   		cd opencv-3.4.1
-		mkdir build && cd build
-		cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
-		make -j
-		sudo make install
+   	cd opencv-3.4.1
+	mkdir build && cd build
+	cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+	make -j
+	sudo make install
    (4)  *** Add opencv libraries to path: ***
-		sudo gedit /etc/ld.so.conf.d/opencv.conf 
+	sudo gedit /etc/ld.so.conf.d/opencv.conf 
         *** add in the file's end: ***
-		/usr/local/lib 
-		sudo ldconfig
+	/usr/local/lib 
+	sudo ldconfig
    (5)  *** bash configurtion: ***
-		sudo gedit /etc/bash.bashrc  
-		*** add in the end: ***
-		PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig  
-		export PKG_CONFIG_PATH  
-		source configurtion:
-		source /etc/bash.bashrc  
-		sudo updatedb
+	sudo gedit /etc/bash.bashrc  
+	*** add in the end: ***
+	PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig  
+	export PKG_CONFIG_PATH  
+	source configurtion:
+	source /etc/bash.bashrc  
+	sudo updatedb
 ```
 
 (**Our Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1VYiQNOdLLQ30KIJLaAh_iVdC5-q0qAJF/view?usp=sharing) **)
@@ -65,7 +65,7 @@ We use PCL to deal with point cloud features and Lidar-camera extrinsic paramete
 
 ```bash
    (1)  *** update your host: ***
-   		sudo apt-get update
+   	sudo apt-get update
    (2)  *** install VTK ***
         cd VTK-8.2.0
         mkdir build && cd build
@@ -84,7 +84,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
 
 ```bash
    (1)  *** install dependencies: ***
-   		sudo apt-get install libglew-dev libpython2.7-dev libboost-dev libboost-thread-dev libboost-filesystem-dev -y
+   	sudo apt-get install libglew-dev libpython2.7-dev libboost-dev libboost-thread-dev libboost-filesystem-dev -y
    (3)  *** install Pangolin: ***
         cd Pangolin
         mkdir build && cd build
@@ -205,7 +205,7 @@ Hard synchronization is performed with all of these sensors by a trigger signal 
 Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver installation](https://github.com/Livox-SDK/livox_ros_driver).
 
 ```bash
-	cd ~/catkin_ws/src/CamVox/
+    cd ~/catkin_ws/src/CamVox/
     chmod +x run.sh
     ./run.sh
 ```
@@ -255,14 +255,14 @@ An example of RGB camera and point cloud overlay after calibration. (a) not cali
 ### 4.3 Running Rosbag Examples
 #### 4.3.1  running without saving trajectory and colored pcd files
 ```bash
-	roscore
+    roscore
     cd CamVox/isee-camvox
     rosrun online camvox Vocabulary/ORBvoc.bin camvox/online/Livox.yaml 
     rosbag play CamVox.bag (or calibration.bag)
 ```
 #### 4.3.2  saving trajectory and colored  pcd files after finishing specified frames (e.g. 1000)
 ```bash
-	roscore
+    roscore
     cd CamVox/isee-camvox
     rosrun online camvox Vocabulary/ORBvoc.bin camvox/online/Livox.yaml 1000
     rosbag play CamVox.bag (or calibration.bag)
