@@ -19,7 +19,7 @@ The long depth detection range also beneﬁt a more efﬁcient mapping. Comparis
 <div align="center">
     <img src="pics/compare.png" width = 90% >
 </div>
-**Developer:** [Yuewen Zhu](https://github.com/zywok), [Chunran Zheng](https://github.com/xuankuzcr), [Chongjian Yuan](https://github.com/ChongjianYUAN), [Xu Huang](https://github.com/Xxxxhx).
+**Developer**:  [Yuewen Zhu](https://github.com/zywok), [Chunran Zheng](https://github.com/xuankuzcr), [Chongjian Yuan](https://github.com/ChongjianYUAN), [Xu Huang](https://github.com/Xxxxhx).
 
 **Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://www.bilibili.com/video/BV1fZ4y1V795/)] [[Google Driver](https://drive.google.com/file/d/1DKq6BoN_x7LYOMyX92Wqd6lYwfsZVOYt/view?usp=sharing)] 
 
