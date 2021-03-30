@@ -174,16 +174,11 @@ namespace Camvox
         }
         if ((fabs(mDepthMapFactor - 1.0f) > 1e-5) || mImDepth.type() != CV_32F)
             mImDepth.convertTo(mImDepth, CV_32F, mDepthMapFactor);    
-        ofstream OutFile("save_timestamp.txt");                                      
-
-        //!  --------------------------------------------------->   Time1  -------------------------------------------------------------------------- //
+       
         //auto t0 = std::chrono::steady_clock::now();
         mCurrentFrame = Frame(mImGray, mImDepth, timestamp, mpORBextractorLeft, mpORBVocabulary, mK, mDistCoef, mbf, mThDepth);   
-        OutFile << "frame: "<<"delt_t"<<endl;  
-        //  std::cout <<"構造幀時間"<< std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t0).count()<< '\n';
+   
         Track();  
-
-        OutFile.close();  
         return mCurrentFrame.mTcw.clone();
     }
 

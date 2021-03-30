@@ -8,6 +8,16 @@
 #define deg2rad(x) (x) * pi / 180
 
 bool color2dDepth = false;
+string strSettingPath_ = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/config/camera.yaml";
+string RGBPath_ = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/calibration/calibration.bmp";
+string PcdPath_ = "/home/zyw/catkin_ws/src/camvox/isee-camvox/camvox/calibration/calibration.pcd"; 
+
+
+// kdtree and pcd setting
+pcl::KdTreeFLANN<pcl::PointXYZ> kdtree_;
+pcl::PointCloud<pcl::PointXYZI>::Ptr horizon_cloud_(new pcl::PointCloud<pcl::PointXYZI>);
+pcl::PointCloud<pcl::PointXYZ>::Ptr rgb_cloud_xyz_(new pcl::PointCloud<pcl::PointXYZ>), lidar_cloud_xyz_(new pcl::PointCloud<pcl::PointXYZ>), rgb_use_cloud_(new pcl::PointCloud<pcl::PointXYZ>), lidar_use_cloud_(new pcl::PointCloud<pcl::PointXYZ>);
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr rgb_cloud_xyzrgb_(new pcl::PointCloud<pcl::PointXYZRGB>), lidar_cloud_xyzrgb_(new pcl::PointCloud<pcl::PointXYZRGB>), rgb_use_cloud_xyzrgb_(new pcl::PointCloud<pcl::PointXYZRGB>), lidar_use_cloud_xyzrgb_(new pcl::PointCloud<pcl::PointXYZRGB>);
 
 namespace Camvox
 {
@@ -40,7 +50,7 @@ namespace Camvox
     Eigen::Vector3d test_angle = test_rotation_matrix.eulerAngles(2, 1, 0);
     extrinsic_params << test_angle[0], test_angle[1], test_angle[2], T_[0], T_[1], T_[2];
 
-    // read Camera image
+     // read Camera image
     origin_RGB_ = imread(_RGB_path, CV_LOAD_IMAGE_UNCHANGED);
     imRGB_ = imread(_RGB_path, CV_LOAD_IMAGE_UNCHANGED);
 
@@ -52,7 +62,7 @@ namespace Camvox
     imRGB_ = imRGB_(rect_);
 
     // RGB2GRAY
-    cvtColor(imRGB_, imGray_, CV_BGR2GRAY);
+    cvtColor(imRGB_, imGray_, CV_RGB2GRAY);
 
     // histogram equalization
     if (is_enhancement_)
@@ -99,7 +109,7 @@ namespace Camvox
     convertToRgbCloud(lidar_use_cloud_, lidar_use_cloud_xyzrgb_, Eigen::Vector3i(0, 0, 255));
   }
 
-  /***************************************************loadPcd*******************************************************************/
+  //***************************************************loadPcd*******************************************************************/
   bool Calibrating::loadPcd(const std::string &pcd_file)
   {
     horizon_cloud_ = pcl::PointCloud<pcl::PointXYZI>::Ptr(new pcl::PointCloud<pcl::PointXYZI>);
@@ -115,7 +125,7 @@ namespace Camvox
     }
   }
 
-  /****************************************loadParams***************************************************************************/
+  //****************************************loadParams***************************************************************************/
   bool Calibrating::loadParams(const std::string &filename)
   {
     cv::FileStorage fSettings(filename, cv::FileStorage::READ);
@@ -145,7 +155,7 @@ namespace Camvox
     mDepthMapFactor_ = 1 / mDepthMapFactor_;
   }
 
-  /***********************************************Projection***********************************************************************/
+  //***********************************************Projection***********************************************************************/
   void Calibrating::Projection(const ProjectionType projection_type, const Vector6d &extrinsic_params)
   {
     if (projection_type == INTENSITY)
@@ -163,9 +173,6 @@ namespace Camvox
       imdepth_ = convertByDepth(extrinsic_params, is_fillImg_);
       imdepth_ = imdepth_(rect_);
       imdepth_.convertTo(imdepth8_, CV_8U, 1.0 / 256);
-      /********************DEBUG************************/
-      cout << "DEPTH" << endl;
-      /*************************************************/
       if (is_enhancement_)
         equalizeHist(imdepth8_, imdepth8_);
     }
@@ -184,7 +191,7 @@ namespace Camvox
     }
   }
 
-  /*****************************************************convertToRgbCloud*****************************************************************/
+  //*****************************************************convertToRgbCloud*****************************************************************/
   void Calibrating::convertToRgbCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &xyz_cloud, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &xyzrgb_cloud, Eigen::Vector3i rgb)
   {
     xyzrgb_cloud->points.clear();
@@ -204,7 +211,7 @@ namespace Camvox
     xyzrgb_cloud->height = 1;
   }
 
-  /***************************************************convertByIntensity*******************************************************************/
+  //***************************************************convertByIntensity*******************************************************************/
   Mat Calibrating::convertByIntensity(const Vector6d &calib_params)
   {
     int max_intensity = 100;
@@ -280,16 +287,22 @@ namespace Camvox
         }
       }
     }
+    /************************Debug********************************/
+    // cv::imshow("project by intensiy", filed_img);
+    // cv::imwrite("/home/zyw/intensity.jpg", filed_img);
+    // cv::waitKey();
+    /************************Debug********************************/
     return filed_img;
   }
 
-  /*************************************************convertByDepth*********************************************************************/
+  //*************************************************convertByDepth*********************************************************************/
   Mat Calibrating::convertByDepth(const Vector6d &calib_params, const bool is_fillImg)
   {
     std::vector<cv::Point3f> pts_3d;
     Eigen::AngleAxisd rotation_vector3;
     rotation_vector3 = Eigen::AngleAxisd(calib_params[0], Eigen::Vector3d::UnitZ()) * Eigen::AngleAxisd(calib_params[1], Eigen::Vector3d::UnitY()) * Eigen::AngleAxisd(calib_params[2], Eigen::Vector3d::UnitX());
     double mean_distance = 0;
+
     for (size_t i = 0; i < horizon_cloud_->size(); ++i)
     {
       pcl::PointXYZI point_3d = horizon_cloud_->points[i];
@@ -310,6 +323,7 @@ namespace Camvox
     cv::Mat image_project = cv::Mat::zeros(height_, width_, CV_16UC1);
     int image_rows = image_project.rows;
     int image_cols = image_project.cols;
+
     for (size_t i = 0; i < pts_2d.size(); ++i)
     {
       cv::Point2f point_2d = pts_2d[i];
@@ -327,7 +341,6 @@ namespace Camvox
         else
         {
           depth = (depth - min_depth) / max_depth * 65535;
-          // cout << "depth:" << depth << endl;
         }
         image_project.at<ushort>(point_2d.y, point_2d.x) = depth;
       }
@@ -337,6 +350,7 @@ namespace Camvox
     Mat filed_img = image_project.clone();
     if (is_fillImg)
     {
+
       for (size_t x = 0; x < image_project.cols; x++)
       {
         for (size_t y = 0; y < image_project.rows; y++)
@@ -369,10 +383,16 @@ namespace Camvox
         }
       }
     }
+    /************************Debug********************************/
+    // cv::imshow("project by depth(org)", image_project);
+    // cv::imshow("project by depth(filled)", filed_img);
+    // cv::imwrite("/home/zyw/depth.jpg", image_project);
+    // cv::waitKey();
+    /************************Debug********************************/
     return filed_img;
   }
 
-  /*************************************************EdgeDetction*********************************************************************/
+  //*************************************************EdgeDetction*********************************************************************/
   void Calibrating::EdgeDetction(const ProjectionType projection_type, const int rgb_threshold, const int depth_threshold, const int intensity_threshold)
   {
     // Canny
@@ -407,7 +427,7 @@ namespace Camvox
     }
   }
 
-  /***************************************************extractEdge*******************************************************************/
+  //***************************************************extractEdge*******************************************************************/
   void Calibrating::extractEdge(const bool is_filter, const Mat &img, const vector<vector<Point>> &contous, const int min_len, Mat &edge_img, pcl::PointCloud<pcl::PointXYZ>::Ptr &edge_cloud)
   {
     // cv::imshow("before etract", img);
@@ -505,7 +525,7 @@ namespace Camvox
     edge_cloud->height = 1;
   }
 
-  /*********************************************************BuildRgbCloud*************************************************************/
+  //*********************************************************BuildRgbCloud*************************************************************/
   void Calibrating::BuildRgbCloud()
   {
     bool is_use_filter = false;
@@ -513,12 +533,10 @@ namespace Camvox
     rgb_cloud_xyz_ = pcl::PointCloud<pcl::PointXYZ>::Ptr(new pcl::PointCloud<pcl::PointXYZ>);
     rgb_cloud_xyzrgb_ = pcl::PointCloud<pcl::PointXYZRGB>::Ptr(new pcl::PointCloud<pcl::PointXYZRGB>);
     extractEdge(is_use_filter, rgb_canny_, contours_RGB_, 50, color_edge_img, rgb_cloud_xyz_);
-    convertToRgbCloud(rgb_cloud_xyz_, rgb_cloud_xyzrgb_, Eigen::Vector3i(255, 0, 0));
+    convertToRgbCloud(rgb_cloud_xyz_, rgb_cloud_xyzrgb_, Eigen::Vector3i(255, 0, 0));  // red 
   }
 
-  /*****************************************************BuildLidarCloud*****************************************************************/
-
-  /*****************************************************BuildLidarCloud*****************************************************************/
+  //*****************************************************BuildLidarCloud*****************************************************************/
   void Calibrating::BuildLidarCloud()
   {
     bool is_use_filter = false;
@@ -558,9 +576,11 @@ namespace Camvox
     convertToRgbCloud(lidar_cloud_xyz_, lidar_cloud_xyzrgb_, Eigen::Vector3i(0, 0, 255));
   }
 
-  /*************************************************costFunction*********************************************************************/
+  //*************************************************costFunction*********************************************************************/
   float Calibrating::costFunction(const double *abc)
   {
+    
+
     float distance_threshold = 15;
     int K = 2;
     Vector3d t;
@@ -610,10 +630,12 @@ namespace Camvox
     {
       int t1 = clock();
       distance = calcMeanDistance(rgb_use_cloud_, lidar_use_cloud_);
+
       // cout << "mean distance:" << distance << endl;
-      convertToRgbCloud(rgb_use_cloud_, rgb_use_cloud_xyzrgb_, Eigen::Vector3i(255, 0, 0));
-      convertToRgbCloud(lidar_use_cloud_, lidar_use_cloud_xyzrgb_, Eigen::Vector3i(0, 0, 255));
+      //convertToRgbCloud(rgb_use_cloud_, rgb_use_cloud_xyzrgb_, Eigen::Vector3i(255, 0, 0));
+      //convertToRgbCloud(lidar_use_cloud_, lidar_use_cloud_xyzrgb_, Eigen::Vector3i(0, 0, 255));
       // showClouds(rgb_use_cloud_xyzrgb_, lidar_use_cloud_xyzrgb_);
+
     }
     return distance;
   }
@@ -621,21 +643,7 @@ namespace Camvox
   /*****************************************************RpyCostFunction*****************************************************************/
   float Calibrating::RpyCostFunction(const Eigen::Vector3f &rpy)
   {
-    Vector3d eluer;
-    eluer[0] = rpy[0];
-    eluer[1] = rpy[1];
-    eluer[2] = rpy[2];
-    Eigen::Vector3f T(-0.0221759, 0.0727962, 0.082984);
-    Vector6d extrinsic_params;
-    extrinsic_params << eluer[0], eluer[1], eluer[2], T[0], T[1], T[2];
-    Projection(projection_type_, extrinsic_params);
-    rgb_canny_threshold_ = 30;
-    depth_canny_threshold_ = 20;
-    intensity_canny_threshold_ = 30;
-    // Canny edge detect
-    EdgeDetction(projection_type_, rgb_canny_threshold_, depth_canny_threshold_, intensity_canny_threshold_);
-    // Edge filter and build Point cloud
-    BuildRgbCloud();
+    Vector3d eluer;        //cout << "depth:" << depth << endl;
     BuildLidarCloud();
     float distance = 1000;
     if (initRgbUseClouds())
@@ -662,16 +670,16 @@ namespace Camvox
     }
     else
     {
-      applyColorMap(imIntensity8_, im_color, COLORMAP_JET); 
+      applyColorMap(imIntensity8_, im_color, COLORMAP_JET);
     }
     Mat im_show = 0.8 * imRGB_ + 0.8 * im_color;
     int font_face = cv::FONT_HERSHEY_COMPLEX;
     double font_scale = 1;
     int thickness = 2;
     int baseline;
-    //获取文本框的长宽
+
     cv::Size text_size = cv::getTextSize(info, font_face, font_scale, thickness, &baseline);
-    //将文本框居中绘制
+
     cv::Point origin;
     origin.x = text_size.width / 2;
     origin.y = 15 + text_size.height / 2;
@@ -732,7 +740,7 @@ namespace Camvox
     pcl::io::savePCDFile(pcd_path, *cloud);
   }
 
-  /********************************************************backprojection**************************************************************/
+  //********************************************************backprojection**************************************************************/
   Point3f Calibrating::backprojection(Point2f p, float z)
   {
     int u = p.x + 90; // change 90
@@ -744,8 +752,7 @@ namespace Camvox
     return p1;
   }
 
-  /******************************************************unproject_all****************************************************************/
-  //全图反投影为3D点的集合
+  //******************************************************unproject_all****************************************************************/
   vector<Point3f> Calibrating::unproject_all(Mat &imdepth_)
   {
     int rows = imdepth_.rows;
@@ -907,14 +914,14 @@ namespace Camvox
     }
   }
 
-  /***********************************************calcDistance***********************************************************************/
+  //***********************************************calcDistance***********************************************************************/
   float Calibrating::calcDistance(pcl::PointXYZ p1, pcl::PointXYZ p2)
   {
     float distance = sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
     return distance;
   }
 
-  /****************************************************calcMeanDistance******************************************************************/
+  //****************************************************calcMeanDistance******************************************************************/
   float Calibrating::calcMeanDistance(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud1, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud2)
   {
     // test
@@ -942,8 +949,7 @@ namespace Camvox
       {
         for (int j = 0; j < K; j++)
         {
-          float distance =
-              calcDistance(searchPoint, cloud2->points[pointIdxNKNSearch[j]]);
+          float distance = calcDistance(searchPoint, cloud2->points[pointIdxNKNSearch[j]]);
           int k = 1;
           if (distance < 20)
           {
@@ -972,7 +978,7 @@ namespace Camvox
     cout << "sum distance2: " << sum_distance2 << std::endl;
   }
 
-  /**************************************************initRgbUseClouds********************************************************************/
+  //**************************************************initRgbUseClouds********************************************************************/
   bool Calibrating::initRgbUseClouds()
   {
     rgb_use_cloud_ = pcl::PointCloud<pcl::PointXYZ>::Ptr(new pcl::PointCloud<pcl::PointXYZ>);
@@ -1026,6 +1032,7 @@ namespace Camvox
           }
         }
       }
+
     }
     for (size_t i = 0; i < depth_cloud_index.size(); i++)
     {
@@ -1091,8 +1098,30 @@ namespace Camvox
       }
       if (mbOptimizing)
       {
-        // optimizing extrinsic parameters
+        //optimizing camera-lidar extrinsic parameters
         mbOptimizing = false;
+        loadPcd(PcdPath_);
+    loadParams(strSettingPath_);
+ // read Camera image
+    origin_RGB_ = imread(RGBPath_, CV_LOAD_IMAGE_UNCHANGED);
+    imRGB_ = imread(RGBPath_, CV_LOAD_IMAGE_UNCHANGED);
+
+    // intercept RGB image
+    rect_.x = 40;
+    rect_.y = 40;
+    rect_.width = 1300;
+    rect_.height = 500;
+    imRGB_ = imRGB_(rect_);
+
+    // RGB2GRAY
+    cvtColor(imRGB_, imGray_, CV_RGB2GRAY);
+
+    // histogram equalization
+    if (is_enhancement_)
+    {
+      equalizeHist(imGray_, imGray_);
+    }
+    
         cout << "start iteration!" << endl;
         int iter_num = 15;
         float single_resolution = deg2rad(0.05);
@@ -1102,8 +1131,9 @@ namespace Camvox
         optimize_type = 0;
         double test_angle[1] = {best_r_};
         float init_distance = costFunction(test_angle);
+        cout << "Initial Cost Value:" << init_distance << endl;   
         std::string init_info = "cost:" + std::to_string(init_distance);
-        color2d(color2dDepth, init_info);
+        color2d(color2dDepth, init_info);         //1
         for (int iter_count = 0; iter_count < search_round; iter_count++)
         {
           for (int round_index = 0; round_index < 3; round_index++)
@@ -1128,8 +1158,9 @@ namespace Camvox
               best_r_ = best_roll;
               double test_angle[1] = {best_r_};
               float distance = costFunction(test_angle);
+              std::cout << "Yaw angle:" << distance << std::endl;
               std::string info = "cost:" + std::to_string(distance);
-              color2d(color2dDepth, info);
+              color2d(color2dDepth, info);  //2
             }
             else if (optimize_type == 1)
             {
@@ -1150,8 +1181,9 @@ namespace Camvox
               best_p_ = best_pitch;
               double test_angle[1] = {best_p_};
               float distance = costFunction(test_angle);
+              std::cout << "Pitch angle:" << distance << std::endl;
               std::string info = "cost:" + std::to_string(distance);
-              color2d(color2dDepth, info);
+              color2d(color2dDepth, info);  //3
             }
             else if (optimize_type == 2)
             {
@@ -1172,19 +1204,20 @@ namespace Camvox
               best_y_ = best_yaw;
               double test_angle[1] = {best_y_};
               float distance = costFunction(test_angle);
+              std::cout << "Row angle:" << distance << std::endl;
               std::string info = "cost:" + std::to_string(distance);
-              color2d(color2dDepth, info);
+              color2d(color2dDepth, info);  //4
             }
           }
-          cout << "After round" << iter_count << " best rpy:" << rad2deg(best_r_) << "," << rad2deg(best_p_) << "," << rad2deg(best_y_) << endl;
+          cout << "After round " << iter_count << " best rpy:" << rad2deg(best_r_) << "," << rad2deg(best_p_) << "," << rad2deg(best_y_) << endl;
           optimize_type = 0;
-          double test_angle[1] = {best_r_};
-          cout << "final distance:" << costFunction(test_angle) << endl;
-          std::string round_numstr = "round " + std::to_string(iter_count);
+          double test_angle[1] = {best_r_};       
+          cout << "Cost Value:" << costFunction(test_angle) << endl; 
           //showOrgPointClouds("optimize rpy");
           //showClouds(rgb_use_cloud_xyzrgb_,lidar_use_cloud_xyzrgb_);
           single_resolution = single_resolution / 2;
         }
+          
       }
       ResetIfRequested();
       if (CheckFinish())
@@ -1311,6 +1344,10 @@ namespace Camvox
   void Calibrating::InformCalibrating(const bool &flag)
   {
     mbCalibrating = flag;
+  }
+
+  void Calibrating::InformOptimizing(const bool &flag)
+  {
     mbOptimizing = flag;
   }
 

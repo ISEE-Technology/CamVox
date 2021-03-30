@@ -83,14 +83,14 @@ namespace Camvox
                     // This is a match to a MapPoint in the map
                     if (vbMap[i])
                     {
-                        cv::rectangle(im, pt1, pt2, cv::Scalar(0, 255, 0));
-                        cv::circle(im, vCurrentKeys[i].pt, 2, cv::Scalar(0, 255, 0), -1);
+                        cv::rectangle(im, pt1, pt2, cv::Scalar(255, 0, 0));
+                        cv::circle(im, vCurrentKeys[i].pt, 2, cv::Scalar(255, 0, 0), -1);
                         mnTracked++;
                     }
                     else // This is match to a "visual odometry" MapPoint created in the last frame
                     {
-                        cv::rectangle(im, pt1, pt2, cv::Scalar(255, 0, 0));
-                        cv::circle(im, vCurrentKeys[i].pt, 2, cv::Scalar(255, 0, 0), -1);
+                        cv::rectangle(im, pt1, pt2, cv::Scalar(0, 255, 0));
+                        cv::circle(im, vCurrentKeys[i].pt, 2, cv::Scalar(0, 255, 0), -1);
                         mnTrackedVO++;
                     }
                 }
@@ -120,10 +120,10 @@ namespace Camvox
             int nMPs = mpMap->MapPointsInMap();
             s << "KFs: " << nKFs << ", MPs: " << nMPs << ", Matches: " << mnTracked;
 
-            ofstream outfile;
-            outfile.open("/home/zyw/data.txt",ios::binary | ios::app | ios::in | ios::out);
-            outfile << mnTracked  <<endl;
-            outfile.close();
+            // ofstream outfile;
+            // outfile.open("/home/zyw/data.txt",ios::binary | ios::app | ios::in | ios::out);
+            // outfile << mnTracked  <<endl;
+            // outfile.close();
 
             if (mnTrackedVO > 0)
                 s << ", + VO matches: " << mnTrackedVO;
@@ -149,7 +149,7 @@ namespace Camvox
     void FrameDrawer::Update(Tracking *pTracker)
     {
         unique_lock<mutex> lock(mMutex);
-        pTracker->mImGray.copyTo(mIm);
+        pTracker->mImRGB.copyTo(mIm);
         mvCurrentKeys = pTracker->mCurrentFrame.mvKeys;
         N = mvCurrentKeys.size();
         mvbVO = vector<bool>(N, false);

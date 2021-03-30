@@ -24,8 +24,7 @@ using namespace Eigen;
 using namespace cv;
 using namespace std;
 
-
-int num = 0, Activate_flag = 0, Deactivate_flag = 0;
+int num = 0, Activate_flag = 0, Deactivate_flag = 0, CalibrationOptimizing_flag = 0;
 std::vector<livox_ros_driver::CustomMsgConstPtr> livox_data;
 livox_ros_driver::CustomMsg livox_cloud;
 
@@ -47,16 +46,16 @@ public:
     Camvox::System *mpSLAM;
 };
 
-//****************************pcd title***********************************//
-void writeTitle(const string filename, unsigned long point_num) 
+/****************************pcd title***********************************/
+void writeTitle(const string filename, unsigned long point_num)
 {
     ofstream outfile(filename.c_str(), ios_base::out);
-    if (!outfile) 
+    if (!outfile)
     {
         cout << "Can not open the file: " << filename << endl;
         exit(0);
     }
-    else 
+    else
     {
         outfile << "# .PCD v.7 - Point Cloud Data file format" << endl;
         outfile << "VERSION .7" << endl;
@@ -72,18 +71,18 @@ void writeTitle(const string filename, unsigned long point_num)
     }
     ROS_INFO("Save file %s", filename.c_str());
 }
-//*************************pcd write to file**************************************//
-void writePointCloud(const string filename, const vector<pointData> singlePCD) 
+/*************************pcd write to file**************************************/
+void writePointCloud(const string filename, const vector<pointData> singlePCD)
 {
     ofstream outfile(filename.c_str(), ios_base::app);
-    if (!outfile) 
+    if (!outfile)
     {
         cout << "Can not open the file: " << filename << endl;
         exit(0);
     }
-    else 
-    {   
-        for (unsigned long i = 0; i < singlePCD.size(); ++i) 
+    else
+    {
+        for (unsigned long i = 0; i < singlePCD.size(); ++i)
         {
             outfile << float2str(singlePCD[i].x) << " " << float2str(singlePCD[i].y) << " " << float2str(singlePCD[i].z) << " " << int2str(singlePCD[i].i) << endl;
         }
@@ -95,49 +94,61 @@ void LivoxMsgCbk(const livox_ros_driver::CustomMsgConstPtr &livox_msg_in)
     if (Activate_flag)
     {
         livox_cloud = *(livox_msg_in);
-        for(uint i = 0; i < livox_cloud.point_num; ++i) 
+        for (uint i = 0; i < livox_cloud.point_num; ++i)
         {
-            pointData myPoint;
-            myPoint.x = livox_cloud.points[i].x;
-            myPoint.y = livox_cloud.points[i].y;
-            myPoint.z = livox_cloud.points[i].z;
-            myPoint.i = livox_cloud.points[i].reflectivity;
-            vector_data.push_back(myPoint);
+            if (((livox_cloud.points[i].x)) || ((livox_cloud.points[i].y)) || ((livox_cloud.points[i].z)))
+            {
+                pointData myPoint;
+                myPoint.x = livox_cloud.points[i].x;
+                myPoint.y = livox_cloud.points[i].y;
+                myPoint.z = livox_cloud.points[i].z;
+                myPoint.i = livox_cloud.points[i].reflectivity;
+                vector_data.push_back(myPoint);
+            }
         }
         ++num;
-        cout << "SLAM-ActivateCalibrationMode-count = " << num << endl;
+        cout << "point cloud frame num : " << num << endl;
         if (num == 90)
         {
-           writeTitle("./camvox/calibration/calibration.pcd", vector_data.size());
-           writePointCloud("./camvox/calibration/calibration.pcd", vector_data);
-           vector_data.clear();
-           num = 0;
+            writeTitle("./camvox/calibration/calibration.pcd", vector_data.size());
+            writePointCloud("./camvox/calibration/calibration.pcd", vector_data);
+            vector_data.clear();
+            num = 0;
+            cout << "Start calibration optimizing !" << endl;
+            CalibrationOptimizing_flag = 1;
         }
     }
     if (!(Activate_flag))
     {
-       num = 0 ;
-       livox_data.clear();
-       vector_data.clear();
+        num = 0;
+        livox_data.clear();
+        vector_data.clear();
     }
 }
 
 int main(int argc, char **argv)
 {
-
     ros::init(argc, argv, "camvox");
     ros::start();
-    if (argc != 4)
+
+    // if has 3 argcs, dont save point cloud and trajectory
+    // if has 4 argcs, the 4th argc determine the slam system executed frames
+    int argc_flag = 0;
+    if ((argc != 3) && (argc != 4))
     {
-        cerr << "Usage: rosrun online camvox path_to_vocabulary path_to_settings frame_num(0 or other)" << endl;
+        cerr << "Usage: rosrun online camvox path_to_vocabulary path_to_settings frame_num (or no)" << endl;
         ros::shutdown();
         return 1;
     }
+    if (argc == 3)
+        argc_flag = 0;
+    else if (argc == 4)
+        argc_flag = 1;
+
     // Create SLAM system. It initializes all system threads
     Camvox::System SLAM(argv[1], argv[2], Camvox::System::RGBD, true);
     ImageGrabber igb(&SLAM);
     ros::NodeHandle nh;
-
     ros::Subscriber sub_livox_msg = nh.subscribe<livox_ros_driver::CustomMsg>("/livox/lidar", 1, LivoxMsgCbk);
     message_filters::Subscriber<sensor_msgs::Image> rgb_sub(nh, "/isee_rgb", 1);
     message_filters::Subscriber<sensor_msgs::Image> depth_sub(nh, "/isee_depth", 1);
@@ -145,19 +156,21 @@ int main(int argc, char **argv)
     message_filters::Synchronizer<sync_pol> sync(sync_pol(10), rgb_sub, depth_sub);
     sync.registerCallback(boost::bind(&ImageGrabber::GrabRGBD, &igb, _1, _2));
 
-    if (atoi(argv[3])== 0)
+    if (argc_flag == 0)
     {
         while (ros::ok())
         {
             ros::spinOnce();
-            if (SLAM.CalibrationFlag == 1)
+            if (SLAM.CalibrationFlag == 1) //activate
             {
                 Activate_flag = 1;
             }
-            
-            if (SLAM.CalibrationFlag == 2)
+
+            if (SLAM.CalibrationFlag == 2) //deactivate
             {
                 Activate_flag = 0;
+                CalibrationOptimizing_flag = 0;
+                SLAM.DeactivateCalibrationOptimizingMode();
             }
         }
     }
@@ -166,25 +179,28 @@ int main(int argc, char **argv)
         while (ros::ok() and igb.count <= atoi(argv[3]))
         {
             ros::spinOnce();
-            if (SLAM.CalibrationFlag == 1)
+            if (SLAM.CalibrationFlag == 1) //activate
             {
-            Activate_flag = 1;
+                Activate_flag = 1;
             }
-            
-            if (SLAM.CalibrationFlag == 2)
+
+            if (SLAM.CalibrationFlag == 2) //deactivate
             {
-            Activate_flag = 0;
+                Activate_flag = 0;
+                SLAM.DeactivateCalibrationOptimizingMode();
             }
         }
     }
-    
+
     // waiting until PointCloud mappint end
-    while (SLAM.mpPointCloudMapping->loopbusy || SLAM.mpPointCloudMapping->cloudbusy) 
+    while (SLAM.mpPointCloudMapping->loopbusy || SLAM.mpPointCloudMapping->cloudbusy)
     {
         cout << "";
     }
     // Save camera trajectory
-    SLAM.SaveKeyFrameTrajectoryTUM("OnlineKeyFrameTrajectory.txt");
+    SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
+    // Save KeyFrame trajectory
+    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");
     // Save Point Cloud
     SLAM.mpPointCloudMapping->bStop = true;
     SLAM.SavePointCloud();
@@ -219,5 +235,13 @@ void ImageGrabber::GrabRGBD(const sensor_msgs::ImageConstPtr &msgRGB, const sens
         return;
     }
     mpSLAM->TrackRGBD(cv_ptrRGB->image, cv_ptrD->image, cv_ptrRGB->header.stamp.toSec());
+    if (CalibrationOptimizing_flag == 1)
+    {
+        cout << "Save an image !" << endl;
+        cv::imwrite("./camvox/calibration/calibration.bmp", cv_ptrRGB->image);
+        mpSLAM->ActivateCalibrationOptimizingMode();
+        CalibrationOptimizing_flag = 0;
+    }
     ++count;
 }
+

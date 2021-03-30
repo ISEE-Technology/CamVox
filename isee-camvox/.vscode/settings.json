@@ -1,7 +1,7 @@
 {
     "files.associations": {
+        "iterator": "cpp",
         "iostream": "cpp",
-        "mutex": "cpp",
         "cctype": "cpp",
         "clocale": "cpp",
         "cmath": "cpp",
@@ -41,6 +41,7 @@
         "istream": "cpp",
         "limits": "cpp",
         "memory": "cpp",
+        "mutex": "cpp",
         "new": "cpp",
         "ostream": "cpp",
         "numeric": "cpp",
@@ -53,9 +54,6 @@
         "utility": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "valarray": "cpp",
-        "*.ipp": "cpp",
         "string": "cpp"
-    },
-    "commentTranslate.targetLanguage": "zh-CN"
+    }
 }
