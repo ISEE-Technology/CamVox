@@ -59,7 +59,7 @@ We use OpenCV to manipulate images and features. Follow [Opencv Installation](ht
 	sudo updatedb
 ```
 
-(**Our Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1VYiQNOdLLQ30KIJLaAh_iVdC5-q0qAJF/view?usp=sharing) **)
+(**Our Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1VYiQNOdLLQ30KIJLaAh_iVdC5-q0qAJF/view?usp=sharing)**)
 
 ### 1.3 PCL-1.7
 We use PCL to deal with point cloud features and Lidar-camera extrinsic parameters calibration. PCL Installation version recommended as follows.
@@ -78,7 +78,7 @@ We use PCL to deal with point cloud features and Lidar-camera extrinsic paramete
         sudo apt-get install freeglut3-dev
 ```
 
-(**Our Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1g0PkQsxayCkg3mlqYi0VJNvo4DJZhSOi/view?usp=sharing) **)
+(**Our Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1g0PkQsxayCkg3mlqYi0VJNvo4DJZhSOi/view?usp=sharing)**)
 
 ### 1.4  Pangolin
 We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface. Follow [Pangolin Installation](https://github.com/stevenlovegrove/Pangolin). 
@@ -94,7 +94,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
         sudo make intall
 ```
 
-(**Our Recommended version [Pangolin.zip](https://drive.google.com/file/d/1qpoSCxB0Rmd9xXKIZeOJ095KjwPbW0Ve/view?usp=sharing) **)
+(**Our Recommended version [Pangolin.zip](https://drive.google.com/file/d/1qpoSCxB0Rmd9xXKIZeOJ095KjwPbW0Ve/view?usp=sharing)**)
 
 ### 1.5 Ceres Solver
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
@@ -114,7 +114,7 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
         sudo make install
 ```
 
-(**Our Recommended version [Ceres-solver-1.14.0.tar.gz](https://drive.google.com/file/d/14SrZEeOC9beAhHaZY17inPptFX2v328Y/view?usp=sharing) **)
+(**Our Recommended version [Ceres-solver-1.14.0.tar.gz](https://drive.google.com/file/d/14SrZEeOC9beAhHaZY17inPptFX2v328Y/view?usp=sharing)**)
 
 ### 1.6  Eigen
 Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0.  
@@ -128,11 +128,11 @@ Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0
         sudo make install
 ```
 
-(**Our Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1QVLzh_cfMZ-8cdUXzaOnloB13z1wZF3v/view?usp=sharing) **)
+(**Our Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1QVLzh_cfMZ-8cdUXzaOnloB13z1wZF3v/view?usp=sharing)**)
 
 ### 1.7  Livox-SDK
 Follow [Livox-SDK  Installation](https://github.com/Livox-SDK/Livox-SDK).
-(**Our Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1uwIwCk_drPkQUCZ6Y9lIb4LnyzIrnxNs/view?usp=sharing) **)
+(**Our Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1uwIwCk_drPkQUCZ6Y9lIb4LnyzIrnxNs/view?usp=sharing)**)
 
 ### 1.8  MVS camera driver
 Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
@@ -144,7 +144,7 @@ Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
     sudo ./setup.sh
 ```
 
-(**Our Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1TuVj8M5Y7tRMKjPGmjL5PT0A1bHeLROc/view?usp=sharing) **)
+(**Our Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1TuVj8M5Y7tRMKjPGmjL5PT0A1bHeLROc/view?usp=sharing)**)
 
 ## 2. Build CamVox
 Clone the repository and catkin_make:
