@@ -22,9 +22,9 @@ The long depth detection range also beneﬁt a more efﬁcient mapping. Comparis
 
 **Developer:**  [Yuewen Zhu](https://github.com/zywok), [Chunran Zheng](https://github.com/xuankuzcr), [Chongjian Yuan](https://github.com/ChongjianYUAN), [Xu Huang](https://github.com/Xxxxhx).
 
-**Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://www.bilibili.com/video/BV1fZ4y1V795/)] [[Google Driver](https://drive.google.com/file/d/1DKq6BoN_x7LYOMyX92Wqd6lYwfsZVOYt/view?usp=sharing)] 
+**Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://www.bilibili.com/video/BV1fZ4y1V795/)] [[Google Driver](https://drive.google.com/file/d/1rzgaN67_WRPQFS0ZXU5AK0HcAv6LJ69y/view?usp=sharing)] 
 
-**Paper:** our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357), and final ICRA2021 accepted version can be available [CamVox.pdf](https://drive.google.com/file/d/1a53JMIM2C2uB9Xq77S-cztcBwx3TqSHB/view?usp=sharing).
+**Paper:** our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357), and final ICRA2021 accepted version can be available [CamVox.pdf](https://drive.google.com/file/d/1C9BavHv0UvnMlVLemd7sTolkGmsnTf-i/view?usp=sharing).
 
 ## 1. Prerequisites
 ### 1.1 Ubuntu and ROS
@@ -59,7 +59,7 @@ We use OpenCV to manipulate images and features. Follow [Opencv Installation](ht
 	sudo updatedb
 ```
 
-(**Our Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1VYiQNOdLLQ30KIJLaAh_iVdC5-q0qAJF/view?usp=sharing)**)
+(**Our Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1J5Z_ccPuPGiO6gfP27oaTdqyjyo8gQsD/view?usp=sharing)**)
 
 ### 1.3 PCL-1.7
 We use PCL to deal with point cloud features and Lidar-camera extrinsic parameters calibration. PCL Installation version recommended as follows.
@@ -78,7 +78,7 @@ We use PCL to deal with point cloud features and Lidar-camera extrinsic paramete
         sudo apt-get install freeglut3-dev
 ```
 
-(**Our Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1g0PkQsxayCkg3mlqYi0VJNvo4DJZhSOi/view?usp=sharing)**)
+(**Our Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1ZJqum6VaELb6RiB8S5piyFtqOS38DrYg/view?usp=sharing)**)
 
 ### 1.4  Pangolin
 We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface. Follow [Pangolin Installation](https://github.com/stevenlovegrove/Pangolin). 
@@ -94,7 +94,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
         sudo make intall
 ```
 
-(**Our Recommended version [Pangolin.zip](https://drive.google.com/file/d/1qpoSCxB0Rmd9xXKIZeOJ095KjwPbW0Ve/view?usp=sharing)**)
+(**Our Recommended version [Pangolin.zip](https://drive.google.com/file/d/1L4CGVF9bQLkmJ7BIPw2wFqmjYS9EYHAH/view?usp=sharing)**)
 
 ### 1.5 Ceres Solver
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
@@ -114,7 +114,7 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
         sudo make install
 ```
 
-(**Our Recommended version [Ceres-solver-1.14.0.tar.gz](https://drive.google.com/file/d/14SrZEeOC9beAhHaZY17inPptFX2v328Y/view?usp=sharing)**)
+(**Our Recommended version [Ceres-solver-1.14.0.tar.gz](https://drive.google.com/file/d/1x3c-xlKEovb4VvDUext2cPo2oOY7Ms6C/view?usp=sharing)**)
 
 ### 1.6  Eigen
 Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0.  
@@ -128,11 +128,11 @@ Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0
         sudo make install
 ```
 
-(**Our Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1QVLzh_cfMZ-8cdUXzaOnloB13z1wZF3v/view?usp=sharing)**)
+(**Our Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1TOHpoSz7pKBluMre9nhZWHmayb5qN1ZH/view?usp=sharing)**)
 
 ### 1.7  Livox-SDK
 Follow [Livox-SDK  Installation](https://github.com/Livox-SDK/Livox-SDK).
-(**Our Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1uwIwCk_drPkQUCZ6Y9lIb4LnyzIrnxNs/view?usp=sharing)**)
+(**Our Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1PCj3JwSG3LRhy5d_64BxhLZVcquUs8Ue/view?usp=sharing)**)
 
 ### 1.8  MVS camera driver
 Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
@@ -144,7 +144,7 @@ Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
     sudo ./setup.sh
 ```
 
-(**Our Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1TuVj8M5Y7tRMKjPGmjL5PT0A1bHeLROc/view?usp=sharing)**)
+(**Our Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1XAYIUdeGBglMYKhnkY0qjcipnARVVcjQ/view?usp=sharing)**)
 
 ## 2. Build CamVox
 Clone the repository and catkin_make:
