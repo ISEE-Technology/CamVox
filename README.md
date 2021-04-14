@@ -91,7 +91,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
         mkdir build && cd build
         cmake ..
         make -j
-        sudo make intall
+        sudo make install
 ```
 
 (**Our Recommended version [Pangolin.zip](https://drive.google.com/file/d/1L4CGVF9bQLkmJ7BIPw2wFqmjYS9EYHAH/view?usp=sharing)**)
@@ -100,10 +100,10 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
 
 ```bash
-   (1)  *** install dependencies:***
+   (1)  *** install dependencies: ***
         sudo apt-get install liblapack-dev 
         sudo apt-get install libsuitesparse-dev 
-        sudo apt-get install libcxsparse3.1.2 
+        sudo apt-get install libcxsparse3.1.4 
         sudo apt-get install libgflags-dev 
         sudo apt-get install libgoogle-glog-dev libgtest-dev
    (2)  *** install ceres: ***
