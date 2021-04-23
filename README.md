@@ -26,6 +26,9 @@ The long depth detection range also beneﬁt a more efﬁcient mapping. Comparis
 
 **Paper:** our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357), and final ICRA2021 accepted version can be available [CamVox.pdf](https://drive.google.com/file/d/1C9BavHv0UvnMlVLemd7sTolkGmsnTf-i/view?usp=sharing).
 
+**Lidar-Camera Automatic calibration follow-up work:**  ["Pixel-level Extrinsic Self Calibration of High Resolution LiDAR and Camera in Targetless Environments"](https://github.com/hku-mars/livox_camera_calib).
+
+
 ## 1. Prerequisites
 ### 1.1 Ubuntu and ROS
 Ubuntu 64-bit 16.04 or 18.04.
