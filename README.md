@@ -159,6 +159,9 @@ Clone the repository and catkin_make:
     ./build.sh
     ./build_ros.sh
     source ~/catkin_ws/devel/setup.bash
+    
+    cd CamVox/isee-camvox/Vocabulary
+    tar zxvf ORBvoc.txt.tar.gz
 ```
 ## 3. Run with Hardware
 ### 3.1 Hardware
