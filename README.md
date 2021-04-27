@@ -137,8 +137,8 @@ Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0
 Follow [Livox-SDK  Installation](https://github.com/Livox-SDK/Livox-SDK).
 (**Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1PCj3JwSG3LRhy5d_64BxhLZVcquUs8Ue/view?usp=sharing)**)
 
-### 1.8  MVS camera driver
-Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
+### 1.8  MVS camera SDK and Ros driver
+Install the [HIKROBOT](https://en.hikrobotics.com/) camera SDK as follows.
 
 ```bash
     tar zxvf MVS-2.0.0_x86_64_20191126.tar.gz
@@ -148,7 +148,9 @@ Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
 ```
 In addition, we supply a (**[software trigger Hikvisions' compatible Ros drivers](https://drive.google.com/file/d/1Oxq6SZrth1-jhwO6OxcTJGFnmmY-HYTi/view?usp=sharing)**), you can run it directly just use USB to connect the camera.
 
-
+```bash
+    roslaunch mvs_camera mvs_camera.launch
+```
 
 (**Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1XAYIUdeGBglMYKhnkY0qjcipnARVVcjQ/view?usp=sharing)**)
 
