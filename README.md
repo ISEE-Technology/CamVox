@@ -33,7 +33,7 @@ The long depth detection range also beneﬁt a more efﬁcient mapping. Comparis
 ### 1.1 Ubuntu and ROS
 Ubuntu 64-bit 16.04 or 18.04.
 ROS Kinetic or Melodic. Follow [ROS Installation](http://wiki.ros.org/ROS/Installation).    
-(**Our Recommended version Ubunutu 16.04 LTS  kernel version 4.15.0-140-generic**)
+(**Recommended version Ubunutu 16.04 LTS  kernel version 4.15.0-140-generic**)
 
 ### 1.2 OpenCV
 We use OpenCV to manipulate images and features. Follow [Opencv Installation](http://opencv.org). Required at leat 2.4.3. Tested with OpenCV 2.4.11 and OpenCV 3.4.1. 
@@ -62,7 +62,7 @@ We use OpenCV to manipulate images and features. Follow [Opencv Installation](ht
 	sudo updatedb
 ```
 
-(**Our Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1J5Z_ccPuPGiO6gfP27oaTdqyjyo8gQsD/view?usp=sharing)**)
+(**Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1J5Z_ccPuPGiO6gfP27oaTdqyjyo8gQsD/view?usp=sharing)**)
 
 ### 1.3 PCL-1.7
 We use PCL to deal with point cloud features and Lidar-camera extrinsic parameters calibration. PCL Installation version recommended as follows.
@@ -81,7 +81,7 @@ We use PCL to deal with point cloud features and Lidar-camera extrinsic paramete
         sudo apt-get install freeglut3-dev
 ```
 
-(**Our Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1ZJqum6VaELb6RiB8S5piyFtqOS38DrYg/view?usp=sharing)**)
+(**Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1ZJqum6VaELb6RiB8S5piyFtqOS38DrYg/view?usp=sharing)**)
 
 ### 1.4  Pangolin
 We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface. Follow [Pangolin Installation](https://github.com/stevenlovegrove/Pangolin). 
@@ -97,7 +97,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
         sudo make install
 ```
 
-(**Our Recommended version [Pangolin.zip](https://drive.google.com/file/d/1L4CGVF9bQLkmJ7BIPw2wFqmjYS9EYHAH/view?usp=sharing)**)
+(**Recommended version [Pangolin.zip](https://drive.google.com/file/d/1L4CGVF9bQLkmJ7BIPw2wFqmjYS9EYHAH/view?usp=sharing)**)
 
 ### 1.5 Ceres Solver
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
@@ -117,7 +117,7 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
         sudo make install
 ```
 
-(**Our Recommended version [Ceres-solver-1.14.0.tar.gz](https://drive.google.com/file/d/1x3c-xlKEovb4VvDUext2cPo2oOY7Ms6C/view?usp=sharing)**)
+(**Recommended version [Ceres-solver-1.14.0.tar.gz](https://drive.google.com/file/d/1x3c-xlKEovb4VvDUext2cPo2oOY7Ms6C/view?usp=sharing)**)
 
 ### 1.6  Eigen
 Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0.  
@@ -131,11 +131,11 @@ Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0
         sudo make install
 ```
 
-(**Our Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1TOHpoSz7pKBluMre9nhZWHmayb5qN1ZH/view?usp=sharing)**)
+(**Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1TOHpoSz7pKBluMre9nhZWHmayb5qN1ZH/view?usp=sharing)**)
 
 ### 1.7  Livox-SDK
 Follow [Livox-SDK  Installation](https://github.com/Livox-SDK/Livox-SDK).
-(**Our Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1PCj3JwSG3LRhy5d_64BxhLZVcquUs8Ue/view?usp=sharing)**)
+(**Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1PCj3JwSG3LRhy5d_64BxhLZVcquUs8Ue/view?usp=sharing)**)
 
 ### 1.8  MVS camera driver
 Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
@@ -146,8 +146,11 @@ Install the [HIKROBOT](https://en.hikrobotics.com/) camera driver as follows.
     chmod +x setup.sh
     sudo ./setup.sh
 ```
+In addition, we supply a (**[software trigger Hikvisions' compatible Ros drivers](https://drive.google.com/file/d/1Oxq6SZrth1-jhwO6OxcTJGFnmmY-HYTi/view?usp=sharing)**), you can run it directly just use USB to connect the camera.
 
-(**Our Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1XAYIUdeGBglMYKhnkY0qjcipnARVVcjQ/view?usp=sharing)**)
+
+
+(**Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1XAYIUdeGBglMYKhnkY0qjcipnARVVcjQ/view?usp=sharing)**)
 
 ## 2. Build CamVox
 Clone the repository and catkin_make:
