@@ -22,9 +22,9 @@ The long depth detection range also beneﬁt a more efﬁcient mapping. Comparis
 
 **Developer:**  [Yuewen Zhu](https://github.com/zywok), [Chunran Zheng](https://github.com/xuankuzcr), [Chongjian Yuan](https://github.com/ChongjianYUAN), [Xu Huang](https://github.com/Xxxxhx).
 
-**Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://www.bilibili.com/video/BV1fZ4y1V795/)] [[Google Driver](https://drive.google.com/file/d/1rzgaN67_WRPQFS0ZXU5AK0HcAv6LJ69y/view?usp=sharing)] 
+**Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://www.bilibili.com/video/BV1fZ4y1V795/)] [[OwnCloud](http://www.zywok.com:20441/index.php/s/de8ESepxDJFAOOK)] 
 
-**Paper:** our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357), and final ICRA2021 accepted version can be available [CamVox.pdf](https://drive.google.com/file/d/1C9BavHv0UvnMlVLemd7sTolkGmsnTf-i/view?usp=sharing).
+**Paper:** our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357), and final ICRA2021 accepted version can be available [CamVox.pdf](http://www.zywok.com:20441/index.php/s/xEqCafR6dEp4REZ).
 
 **Lidar-Camera Automatic calibration follow-up work:**  ["Pixel-level Extrinsic Self Calibration of High Resolution LiDAR and Camera in Targetless Environments"](https://github.com/hku-mars/livox_camera_calib).
 
@@ -62,7 +62,7 @@ We use OpenCV to manipulate images and features. Follow [Opencv Installation](ht
 	sudo updatedb
 ```
 
-(**Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1J5Z_ccPuPGiO6gfP27oaTdqyjyo8gQsD/view?usp=sharing)**)
+(**Recommended version [OpenCV-3.4.1.zip](http://www.zywok.com:20441/index.php/s/vj8cP3QZAUqK0Gg)**)
 
 ### 1.3 PCL-1.7
 We use PCL to deal with point cloud features and Lidar-camera extrinsic parameters calibration. PCL Installation version recommended as follows.
@@ -81,7 +81,7 @@ We use PCL to deal with point cloud features and Lidar-camera extrinsic paramete
         sudo apt-get install freeglut3-dev
 ```
 
-(**Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1ZJqum6VaELb6RiB8S5piyFtqOS38DrYg/view?usp=sharing)**)
+(**Recommended VTK version [VTK-8.2.0.tar.gz](http://www.zywok.com:20441/index.php/s/lsILwir9tvbFWw5)**)
 
 ### 1.4  Pangolin
 We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface. Follow [Pangolin Installation](https://github.com/stevenlovegrove/Pangolin). 
@@ -97,7 +97,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
         sudo make install
 ```
 
-(**Recommended version [Pangolin.zip](https://drive.google.com/file/d/1L4CGVF9bQLkmJ7BIPw2wFqmjYS9EYHAH/view?usp=sharing)**)
+(**Recommended version [Pangolin.zip](http://www.zywok.com:20441/index.php/s/hqgpWLazZdAFk8l)**)
 
 ### 1.5 Ceres Solver
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
@@ -117,7 +117,7 @@ Follow [Ceres Installation](http://ceres-solver.org/installation.html).
         sudo make install
 ```
 
-(**Recommended version [Ceres-solver-1.14.0.tar.gz](https://drive.google.com/file/d/1x3c-xlKEovb4VvDUext2cPo2oOY7Ms6C/view?usp=sharing)**)
+(**Recommended version [Ceres-solver-1.14.0.tar.gz](http://www.zywok.com:20441/index.php/s/sglAQURmV4CjYF4)**)
 
 ### 1.6  Eigen
 Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0.  
@@ -131,11 +131,11 @@ Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0
         sudo make install
 ```
 
-(**Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1TOHpoSz7pKBluMre9nhZWHmayb5qN1ZH/view?usp=sharing)**)
+(**Recommended version [Eigen-3.2.10.tar.gz](http://www.zywok.com:20441/index.php/s/TRc7mCNPQB7o5AD)**)
 
 ### 1.7  Livox-SDK
 Follow [Livox-SDK  Installation](https://github.com/Livox-SDK/Livox-SDK).
-(**Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1PCj3JwSG3LRhy5d_64BxhLZVcquUs8Ue/view?usp=sharing)**)
+(**Recommended version [Livox-SDK-master.zip](http://www.zywok.com:20441/index.php/s/sBMd7auN5Dxclnh)**)
 
 ### 1.8  MVS camera SDK and Ros driver
 Install the [HIKROBOT](https://en.hikrobotics.com/) camera SDK as follows.
@@ -146,13 +146,13 @@ Install the [HIKROBOT](https://en.hikrobotics.com/) camera SDK as follows.
     chmod +x setup.sh
     sudo ./setup.sh
 ```
-In addition, we supply a (**[software trigger Hikvisions' compatible Ros drivers](https://drive.google.com/file/d/1Oxq6SZrth1-jhwO6OxcTJGFnmmY-HYTi/view?usp=sharing)**), you can run it directly just use USB to connect the camera.
+In addition, we supply a (**[software trigger Hikvisions' compatible Ros drivers](http://www.zywok.com:20441/index.php/s/4RSqFVvFwR5DYGg)**), you can run it directly just use USB to connect the camera.
 
 ```bash
     roslaunch mvs_camera mvs_camera.launch
 ```
 
-(**Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1XAYIUdeGBglMYKhnkY0qjcipnARVVcjQ/view?usp=sharing)**)
+(**Recommended version [MVS-2.0.0.tar.gz](http://www.zywok.com:20441/index.php/s/4YL9F3eJkgWjQ2J)**)
 
 ## 2. Build CamVox
 Clone the repository and catkin_make:
@@ -231,9 +231,9 @@ Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver instal
 	<img src="./pics/SUSTech.JPG" alt="show" width = 90% />
 </div>
 
-We open sourced our dataset in SUSTech campus with loop closure. [CamVox.bag](https://drive.google.com/file/d/15VHQmmG7ZKrRT9chuOZoUUbEFvanTgrH/view?usp=sharing).  (**Updated**)
+We open sourced our dataset in SUSTech campus with loop closure. [CamVox.bag](http://www.zywok.com:20441/index.php/s/ZykmlNVeMLY2rsM).  (**Updated**)
 
-Other two main framework data formats  for comparison. [VINS-mono.bag](https://drive.google.com/file/d/1hscIZa-kqUa8ygMohHYCEkJFT6ujtL35/view?usp=sharing) | [livox_loam_horizon.bag](https://drive.google.com/file/d/1iVrCn5Y_RwDqgwemX6ximT5KEkHTzn-O/view?usp=sharing) |  [Groundtruth.rar](https://drive.google.com/file/d/1DGIU2UU75zypw24f80vwn3Lbd1wRc1BQ/view?usp=sharing)  (**Updated**)
+Other two main framework data formats  for comparison. [VINS-mono.bag](http://www.zywok.com:20441/index.php/s/c3vmOIpaSMjKbD7) | [livox_loam_horizon.bag](http://www.zywok.com:20441/index.php/s/sNZdxe1e9NWzXRt) |  [Groundtruth.rar](http://www.zywok.com:20441/index.php/s/FSp72M9AkXwEP5s)  (**Updated**)
 
 <div align=center>
 	<img src="./pics/CamVox-rosbag.png" alt="show" width = 45% />
@@ -249,7 +249,7 @@ The comparisons of the trajectories from CamVox, two mainstream SLAM framework a
 	<img src="./pics/calibration.gif" alt="show" width = 90% />
 </div>
 
-We provide a rosbag file with static scenes to test the automatic calibration thread. [calibration.bag](https://drive.google.com/file/d/1OuoanNwsDJzmdq6eWJvHoYFEib-uJNBo/view?usp=sharing).  (**Updated**)
+We provide a rosbag file with static scenes to test the automatic calibration thread. [calibration.bag](http://www.zywok.com:20441/index.php/s/JcILwT3RidRV5Cw).  (**Updated**)
 When the car detects more than **10 frames of still images (about 1 second)**, the automatic calibration thread starts to work. The thread will be interrupted to enter the SLAM mode if the car starts to move before the end of calibration. 
 The effects of automatic calibration is shown as follows.
 
