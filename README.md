@@ -231,7 +231,7 @@ Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver instal
 	<img src="./pics/SUSTech.JPG" alt="show" width = 90% />
 </div>
 
-We open sourced our dataset in SUSTech campus with loop closure. [CamVox.bag](http://192.168.3.3:20441/index.php/s/bj55H4bgYh2bqSF).  (**Updated**)
+We open sourced our dataset in SUSTech campus with loop closure. [CamVox.bag](http://www.zywok.com:20441/index.php/s/bj55H4bgYh2bqSF).  (**Updated**)
 
 Other two main framework data formats  for comparison. [VINS-mono.bag](http://www.zywok.com:20441/index.php/s/c3vmOIpaSMjKbD7) | [livox_loam_horizon.bag](http://www.zywok.com:20441/index.php/s/sNZdxe1e9NWzXRt) |  [Groundtruth.rar](http://www.zywok.com:20441/index.php/s/FSp72M9AkXwEP5s)  (**Updated**)
 
