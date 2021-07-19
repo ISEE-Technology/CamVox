@@ -22,9 +22,9 @@ The long depth detection range also beneﬁt a more efﬁcient mapping. Comparis
 
 **Developer:**  [Yuewen Zhu](https://github.com/zywok), [Chunran Zheng](https://github.com/xuankuzcr), [Chongjian Yuan](https://github.com/ChongjianYUAN), [Xu Huang](https://github.com/Xxxxhx).
 
-**Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://www.bilibili.com/video/BV1fZ4y1V795/)] [[OwnCloud](http://www.zywok.com:20441/index.php/s/de8ESepxDJFAOOK)] 
+**Our related video**: our related videos are now available on [[YouTube Video](https://www.youtube.com/watch?v=AUnZNBB-uUE)] [[bilibili Video](https://drive.google.com/file/d/1B1T8dA5QXdr7YrAn91ruNpnZsI2-PBqi/view?usp=sharing)] [[OwnCloud](http://www.zywok.com:20441/index.php/s/de8ESepxDJFAOOK)] 
 
-**Paper:** our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357), and final ICRA2021 accepted version can be available [CamVox.pdf](http://www.zywok.com:20441/index.php/s/xEqCafR6dEp4REZ).
+**Paper:** our related paper has been posted on [arXiv](https://arxiv.org/abs/2011.11357), and final ICRA2021 accepted version can be available [CamVox.pdf](https://drive.google.com/file/d/1ijm_8bu0TWQlX03qMDI3ZAlN3AxSnDUC/view?usp=sharing).
 
 **Lidar-Camera Automatic calibration follow-up work:**  ["Pixel-level Extrinsic Self Calibration of High Resolution LiDAR and Camera in Targetless Environments"](https://github.com/hku-mars/livox_camera_calib).
 
@@ -62,7 +62,7 @@ We use OpenCV to manipulate images and features. Follow [Opencv Installation](ht
 	sudo updatedb
 ```
 
-(**Recommended version [OpenCV-3.4.1.zip](http://www.zywok.com:20441/index.php/s/vj8cP3QZAUqK0Gg)**)
+(**Recommended version [OpenCV-3.4.1.zip](https://drive.google.com/file/d/1pGmpMtiE_4njQv3lJx4aXjPATJcnNg31/view?usp=sharing)**)
 
 ### 1.3 PCL-1.7
 We use PCL to deal with point cloud features and Lidar-camera extrinsic parameters calibration. PCL Installation version recommended as follows.
@@ -81,7 +81,7 @@ We use PCL to deal with point cloud features and Lidar-camera extrinsic paramete
         sudo apt-get install freeglut3-dev
 ```
 
-(**Recommended VTK version [VTK-8.2.0.tar.gz](http://www.zywok.com:20441/index.php/s/lsILwir9tvbFWw5)**)
+(**Recommended VTK version [VTK-8.2.0.tar.gz](https://drive.google.com/file/d/1pGmpMtiE_4njQv3lJx4aXjPATJcnNg31/view?usp=sharing)**)
 
 ### 1.4  Pangolin
 We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface. Follow [Pangolin Installation](https://github.com/stevenlovegrove/Pangolin). 
@@ -97,7 +97,7 @@ We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization
         sudo make install
 ```
 
-(**Recommended version [Pangolin.zip](http://www.zywok.com:20441/index.php/s/hqgpWLazZdAFk8l)**)
+(**Recommended version [Pangolin.zip](https://drive.google.com/file/d/1pGmpMtiE_4njQv3lJx4aXjPATJcnNg31/view?usp=sharing)**)
 
 ### 1.5 Ceres Solver
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
@@ -131,11 +131,11 @@ Follow [Eigen Installation](http://eigen.tuxfamily.org). Required at least 3.1.0
         sudo make install
 ```
 
-(**Recommended version [Eigen-3.2.10.tar.gz](http://www.zywok.com:20441/index.php/s/TRc7mCNPQB7o5AD)**)
+(**Recommended version [Eigen-3.2.10.tar.gz](https://drive.google.com/file/d/1pGmpMtiE_4njQv3lJx4aXjPATJcnNg31/view?usp=sharing)**)
 
 ### 1.7  Livox-SDK
 Follow [Livox-SDK  Installation](https://github.com/Livox-SDK/Livox-SDK).
-(**Recommended version [Livox-SDK-master.zip](http://www.zywok.com:20441/index.php/s/sBMd7auN5Dxclnh)**)
+(**Recommended version [Livox-SDK-master.zip](https://drive.google.com/file/d/1pGmpMtiE_4njQv3lJx4aXjPATJcnNg31/view?usp=sharing)**)
 
 ### 1.8  MVS camera SDK and Ros driver
 Install the [HIKROBOT](https://en.hikrobotics.com/) camera SDK as follows.
@@ -146,13 +146,13 @@ Install the [HIKROBOT](https://en.hikrobotics.com/) camera SDK as follows.
     chmod +x setup.sh
     sudo ./setup.sh
 ```
-In addition, we supply a (**[software trigger Hikvisions' compatible Ros drivers](http://www.zywok.com:20441/index.php/s/4RSqFVvFwR5DYGg)**), you can run it directly just use USB to connect the camera.
+In addition, we supply a (**[software trigger Hikvisions' compatible Ros drivers](https://drive.google.com/file/d/1pGmpMtiE_4njQv3lJx4aXjPATJcnNg31/view?usp=sharing)**), you can run it directly just use USB to connect the camera.
 
 ```bash
     roslaunch mvs_camera mvs_camera.launch
 ```
 
-(**Recommended version [MVS-2.0.0.tar.gz](http://www.zywok.com:20441/index.php/s/4YL9F3eJkgWjQ2J)**)
+(**Recommended version [MVS-2.0.0.tar.gz](https://drive.google.com/file/d/1pGmpMtiE_4njQv3lJx4aXjPATJcnNg31/view?usp=sharing)**)
 
 ## 2. Build CamVox
 Clone the repository and catkin_make:
