@@ -231,9 +231,9 @@ Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver instal
 	<img src="./pics/SUSTech.JPG" alt="show" width = 90% />
 </div>
 
-We open sourced our dataset in SUSTech campus with loop closure. [CamVox.bag](http://www.zywok.com:20441/index.php/s/bj55H4bgYh2bqSF).  (**Updated**)
+We open sourced our dataset in SUSTech campus with loop closure. [CamVox.bag](https://drive.google.com/file/d/1q58MxqcAAKw2sOPwB3WFENcGBcBGSXbz/view?usp=sharing).  (**Updated**)
 
-Other two main framework data formats  for comparison. [VINS-mono.bag](http://www.zywok.com:20441/index.php/s/c3vmOIpaSMjKbD7) | [livox_loam_horizon.bag](http://www.zywok.com:20441/index.php/s/sNZdxe1e9NWzXRt) |  [Groundtruth.rar](http://www.zywok.com:20441/index.php/s/FSp72M9AkXwEP5s)  (**Updated**)
+Other two main framework data formats  for comparison. [VINS-mono.bag](https://drive.google.com/file/d/1NtCPvhSsAyK1MZeqVti02NO9E7E0E-8z/view?usp=sharing) | [livox_loam_horizon.bag](https://drive.google.com/file/d/1vITM0Ahtf21sJN6YxXLE5LqevloSG_SO/view?usp=sharing) |  [Groundtruth.bag](https://drive.google.com/file/d/1SxpXTQau9ooB2AhMO_3HVM0Z9ZZbt1cQ/view?usp=sharing)  (**Updated**)
 
 <div align=center>
 	<img src="./pics/CamVox-rosbag.png" alt="show" width = 45% />
@@ -249,7 +249,7 @@ The comparisons of the trajectories from CamVox, two mainstream SLAM framework a
 	<img src="./pics/calibration.gif" alt="show" width = 90% />
 </div>
 
-We provide a rosbag file with static scenes to test the automatic calibration thread. [calibration.bag](http://www.zywok.com:20441/index.php/s/JcILwT3RidRV5Cw).  (**Updated**)
+We provide a rosbag file with static scenes to test the automatic calibration thread. [calibration.bag](https://drive.google.com/file/d/1nfR_bOnv25unP09bbA3SK3Rkdz5gPawp/view?usp=sharing).  (**Updated**)
 When the car detects more than **10 frames of still images (about 1 second)**, the automatic calibration thread starts to work. The thread will be interrupted to enter the SLAM mode if the car starts to move before the end of calibration. 
 The effects of automatic calibration is shown as follows.
 
