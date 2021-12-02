@@ -231,9 +231,9 @@ Connect to your PC to Livox Horizon lidar by following  [Livox-ros-driver instal
 	<img src="./pics/SUSTech.JPG" alt="show" width = 90% />
 </div>
 
-We open sourced our dataset in SUSTech campus with loop closure. [CamVox.bag](https://drive.google.com/file/d/1q58MxqcAAKw2sOPwB3WFENcGBcBGSXbz/view?usp=sharing).  (**Updated**)
+We open sourced our dataset in SUSTech campus with loop closure. You can download the bag file from google drive [CamVox.bag](https://drive.google.com/file/d/1q58MxqcAAKw2sOPwB3WFENcGBcBGSXbz/view?usp=sharing) or zenodo [CamVox.bag](https://zenodo.org/record/5749452#.Yai9ZdBBwuU).  (**Updated**)
 
-Other two main framework data formats  for comparison. [VINS-mono.bag](https://drive.google.com/file/d/1NtCPvhSsAyK1MZeqVti02NO9E7E0E-8z/view?usp=sharing) | [livox_loam_horizon.bag](https://drive.google.com/file/d/1vITM0Ahtf21sJN6YxXLE5LqevloSG_SO/view?usp=sharing) |  [Groundtruth.bag](https://drive.google.com/file/d/1SxpXTQau9ooB2AhMO_3HVM0Z9ZZbt1cQ/view?usp=sharing)  (**Updated**)
+Other two main framework data formats  for comparison. [VINS-mono.bag](https://drive.google.com/file/d/1NtCPvhSsAyK1MZeqVti02NO9E7E0E-8z/view?usp=sharing) | [livox_loam_horizon.bag](https://drive.google.com/file/d/1vITM0Ahtf21sJN6YxXLE5LqevloSG_SO/view?usp=sharing) |  [Groundtruth.bag](https://drive.google.com/file/d/1SxpXTQau9ooB2AhMO_3HVM0Z9ZZbt1cQ/view?usp=sharing)  (**Updated**) 
 
 <div align=center>
 	<img src="./pics/CamVox-rosbag.png" alt="show" width = 45% />
